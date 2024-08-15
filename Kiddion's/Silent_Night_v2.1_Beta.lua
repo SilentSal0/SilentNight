@@ -1574,7 +1574,6 @@ end
 local function toggle_night_loop_afk()
 	if localplayer ~= nil then
 		local safe_value = 1845281 + 1 + (get_localplayer_id() * 883) + 268 + 358 + 5
-		print(globals.get_int(safe_value))
 		for i = NLISg, NLIEg do
 			globals.set_int(i, 300000)
 		end
@@ -1583,7 +1582,6 @@ local function toggle_night_loop_afk()
 			stats.set_int(MPX() .. "CLUB_PAY_TIME_LEFT", -1)
 			sleep(night_loop_delay)
 			if globals.get_int(safe_value) ~= 0 then
-				print(globals.get_int(safe_value))
 				if night_loop_r_cash > 0 then
 					if night_loop_m_count * 100000 >= night_loop_r_cash then
 						states.b30 		  = false
@@ -1595,7 +1593,6 @@ local function toggle_night_loop_afk()
 				night_loop_m_made  = night_loop_m_made + 3
 				night_loop_m_count = night_loop_m_count + 3
 				AMN:set_int(NLCl, 1)
-				print(globals.get_int(safe_value))
 				sleep(night_loop_delay)
 			end
 		end
