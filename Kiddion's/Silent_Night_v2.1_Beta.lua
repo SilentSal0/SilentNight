@@ -1573,7 +1573,8 @@ end
 
 local function toggle_night_loop_afk()
 	if localplayer ~= nil then
-		local safe_value = 1845281 + 1 + (get_localplayer_id() * 877) + 267 + 356 + 5
+		local safe_value = 1845281 + 1 + (get_localplayer_id() * 883) + 268 + 358 + 5
+		print(globals.get_int(safe_value))
 		for i = NLISg, NLIEg do
 			globals.set_int(i, 300000)
 		end
@@ -1582,6 +1583,7 @@ local function toggle_night_loop_afk()
 			stats.set_int(MPX() .. "CLUB_PAY_TIME_LEFT", -1)
 			sleep(night_loop_delay)
 			if globals.get_int(safe_value) ~= 0 then
+				print(globals.get_int(safe_value))
 				if night_loop_r_cash > 0 then
 					if night_loop_m_count * 100000 >= night_loop_r_cash then
 						states.b30 		  = false
@@ -1593,6 +1595,7 @@ local function toggle_night_loop_afk()
 				night_loop_m_made  = night_loop_m_made + 3
 				night_loop_m_count = night_loop_m_count + 3
 				AMN:set_int(NLCl, 1)
+				print(globals.get_int(safe_value))
 				sleep(night_loop_delay)
 			end
 		end
@@ -1712,7 +1715,7 @@ local function toggle_removed_vehicles(bool)
 end
 
 local function toggle_silent_n_sneaky()
-	local hide_me = 1845281 + 1 + (get_localplayer_id() * 883) + 205
+	local hide_me = 1845281 + 1 + (get_localplayer_id() * 883) + 206
 	if states.b48 and localplayer ~= nil then
 		while states.b48 do
 			globals.set_int(hide_me, 8)
@@ -2978,10 +2981,10 @@ function create_apartment_submenu()
 	end)
 
 	apartment_cuts:add_int_range("Player 1", 1, 0, 999, function()
-		return globals.get_int(ACg1) 
+		return globals.get_int(ACg5) 
 	end, function(cut) 
 		globals.set_int(ACg1, 100 - (cut * apartment_players)) 
-		globals.set_int(ACg5, -1 * (-100 + globals.get_int(ACg1)) / apartment_players) 
+		globals.set_int(ACg5, cut) 
 		globals.set_int(ACFg1, 1)
 		globals.set_int(ACFg2, 4)
 		globals.set_int(ACFg2, 3)
@@ -4174,7 +4177,7 @@ end
 
 function create_casino_master_submenu()
 	casino_master:add_int_range("Acquire Chips Limit", 50000, 0, INT_MAX, function()
-		return states.i42
+		return states.i42 - 1
 	end, function(limit)
 		states.i42 = limit
 		globals_set_ints(CMACLg1, CMACLg2, 1, limit)
@@ -5238,7 +5241,7 @@ function create_night_loop_submenu()
 
 	night_loop_m_made  = 0
 	night_loop_m_count = 0
-	night_loop:add_toggle("$300k/2s (AFK)", function() return states.b30 end, function() states.b30 = not states.b30 toggle_night_loop_afk() end)
+	night_loop:add_toggle("$300k (AFK)", function() return states.b30 end, function() states.b30 = not states.b30 toggle_night_loop_afk() end)
 
 	night_loop:add_bare_item("", function()
 		return "Money Made: $" .. format_money((night_loop_m_made ~= 0) and night_loop_m_made .. "00000" or night_loop_m_made)
@@ -6424,7 +6427,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.0 Beta")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.1 Beta")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")
@@ -6445,7 +6448,7 @@ create_heist_tool_submenu()
 --Money Tool Menu--
 
 bunker_crash 	  = money_tool:add_submenu("Bunker Crash | Unclear")
-casino_master 	  = money_tool:add_submenu("Casino Master | Safe")
+casino_master 	  = money_tool:add_submenu("Casino Master | Unclear")
 hangar_cargo_vip  = money_tool:add_submenu("Hangar Cargo VIP | Safe")
 money_editor 	  = money_tool:add_submenu("Money Editor | Safe")
 nightclub_helper  = money_tool:add_submenu("Nightclub Helper | Safe")
