@@ -2,6 +2,65 @@
 
 require_game_build(3274) -- GTA Online v1.69 (build 3274)
 
+--Packed Bools--
+
+local stat_ranges     	       = {
+	{stat = 			 "PSTAT_BOOL", start =     0, finish =   191},
+	{stat =                     "???", start =   192, finish =   512},
+	{stat = 		  "MP_PSTAT_BOOL", start =   513, finish =   704},
+	{stat =                     "???", start =   705, finish =  2918},
+	{stat = 		"MP_TUPSTAT_BOOL", start =  2919, finish =  3110},
+	{stat = 		   "TUPSTAT_BOOL", start =  3111, finish =  3878},
+	{stat =                     "???", start =  3879, finish =  4206},
+	{stat =            "NGPSTAT_BOOL", start =  4207, finish =  4334},
+	{stat =         "MP_NGPSTAT_BOOL", start =  4335, finish =  4398},
+	{stat =                     "???", start =  4399, finish =  6028},
+	{stat =         "NGTATPSTAT_BOOL", start =  6029, finish =  6412},
+	{stat =                     "???", start =  6413, finish =  7320},
+	{stat =      "MP_NGDLCPSTAT_BOOL", start =  7321, finish =  7384},
+	{stat =         "NGDLCPSTAT_BOOL", start =  7385, finish =  7640},
+	{stat =                     "???", start =  7641, finish =  9360},
+	{stat =       "DLCBIKEPSTAT_BOOL", start =  9361, finish =  9552},
+	{stat =                     "???", start =  9553, finish = 15368},
+	{stat =        "DLCGUNPSTAT_BOOL", start = 15369, finish = 15560},
+	{stat =                     "???", start = 15561, finish = 15561},
+	{stat =        "GUNTATPSTAT_BOOL", start = 15562, finish = 15945},
+	{stat =   "DLCSMUGCHARPSTAT_BOOL", start = 15946, finish = 16009},
+	{stat =                     "???", start = 16010, finish = 18097},
+	{stat =       "GANGOPSPSTAT_BOOL", start = 18098, finish = 18161},
+	{stat =                     "???", start = 18162, finish = 22065},
+	{stat =   "BUSINESSBATPSTAT_BOOL", start = 22066, finish = 22193},
+	{stat =                     "???", start = 22194, finish = 24961},
+	{stat =     "ARENAWARSPSTAT_BOOL", start = 24962, finish = 25537},
+	{stat =                     "???", start = 25538, finish = 26809},
+	{stat =        "CASINOPSTAT_BOOL", start = 26810, finish = 27257},
+	{stat =                     "???", start = 27256, finish = 28097},
+	{stat =     "CASINOHSTPSTAT_BOOL", start = 28098, finish = 28353},
+	{stat =                     "???", start = 28354, finish = 28354},
+	{stat =   "HEIST3TATTOOSTAT_BOOL", start = 28355, finish = 28482},
+	{stat =                     "???", start = 28483, finish = 30226},
+	{stat =          "SU20PSTAT_BOOL", start = 30227, finish = 30354},
+	{stat =     "SU20TATTOOSTAT_BOOL", start = 30355, finish = 30482},
+	{stat =                     "???", start = 30483, finish = 30514},
+	{stat =       "HISLANDPSTAT_BOOL", start = 30515, finish = 30706},
+	{stat =                     "???", start = 30707, finish = 31706},
+	{stat =         "TUNERPSTAT_BOOL", start = 31707, finish = 32282},
+	{stat =         "FIXERPSTAT_BOOL", start = 32283, finish = 32410},
+	{stat =    "FIXERTATTOOSTAT_BOOL", start = 32411, finish = 32474},
+	{stat =                     "???", start = 32475, finish = 34122},
+	{stat =          "GEN9PSTAT_BOOL", start = 34123, finish = 34250},
+	{stat =      "DLC12022PSTAT_BOOL", start = 34251, finish = 34762},
+	{stat =                     "???", start = 34763, finish = 36626},
+	{stat =      "DLC22022PSTAT_BOOL", start = 36627, finish = 36946},
+	{stat =                     "???", start = 36947, finish = 41250},
+	{stat = "DLC22022TATTOOSTAT_BOOL", start = 41251, finish = 41314},
+	{stat =      "DLC12023PSTAT_BOOL", start = 41315, finish = 42082},
+	{stat =                     "???", start = 42083, finish = 42106},
+	{stat =      "DLC22023PSTAT_BOOL", start = 42107, finish = 42298},
+	{stat =                     "???", start = 42299, finish = 51058},
+	{stat = "DLC22023TATTOOSTAT_BOOL", start = 51059, finish = 51186}
+}
+
 --Global Functions--
 
 function MPX()
@@ -394,74 +453,18 @@ end
 
 --Array Tables--
 
-local stat_ranges     	       = {
-	{stat = 			 "PSTAT_BOOL", start =     0, finish =   191},
-	{stat =                     "???", start =   192, finish =   512},
-	{stat = 		  "MP_PSTAT_BOOL", start =   513, finish =   704},
-	{stat =                     "???", start =   705, finish =  2918},
-	{stat = 		"MP_TUPSTAT_BOOL", start =  2919, finish =  3110},
-	{stat = 		   "TUPSTAT_BOOL", start =  3111, finish =  3878},
-	{stat =                     "???", start =  3879, finish =  4206},
-	{stat =            "NGPSTAT_BOOL", start =  4207, finish =  4334},
-	{stat =         "MP_NGPSTAT_BOOL", start =  4335, finish =  4398},
-	{stat =                     "???", start =  4399, finish =  6028},
-	{stat =         "NGTATPSTAT_BOOL", start =  6029, finish =  6412},
-	{stat =                     "???", start =  6413, finish =  7320},
-	{stat =      "MP_NGDLCPSTAT_BOOL", start =  7321, finish =  7384},
-	{stat =         "NGDLCPSTAT_BOOL", start =  7385, finish =  7640},
-	{stat =                     "???", start =  7641, finish =  9360},
-	{stat =       "DLCBIKEPSTAT_BOOL", start =  9361, finish =  9552},
-	{stat =                     "???", start =  9553, finish = 15368},
-	{stat =        "DLCGUNPSTAT_BOOL", start = 15369, finish = 15560},
-	{stat =                     "???", start = 15561, finish = 15561},
-	{stat =        "GUNTATPSTAT_BOOL", start = 15562, finish = 15945},
-	{stat =   "DLCSMUGCHARPSTAT_BOOL", start = 15946, finish = 16009},
-	{stat =                     "???", start = 16010, finish = 18097},
-	{stat =       "GANGOPSPSTAT_BOOL", start = 18098, finish = 18161},
-	{stat =                     "???", start = 18162, finish = 22065},
-	{stat =   "BUSINESSBATPSTAT_BOOL", start = 22066, finish = 22193},
-	{stat =                     "???", start = 22194, finish = 24961},
-	{stat =     "ARENAWARSPSTAT_BOOL", start = 24962, finish = 25537},
-	{stat =                     "???", start = 25538, finish = 26809},
-	{stat =        "CASINOPSTAT_BOOL", start = 26810, finish = 27257},
-	{stat =                     "???", start = 27256, finish = 28097},
-	{stat =     "CASINOHSTPSTAT_BOOL", start = 28098, finish = 28353},
-	{stat =                     "???", start = 28354, finish = 28354},
-	{stat =   "HEIST3TATTOOSTAT_BOOL", start = 28355, finish = 28482},
-	{stat =                     "???", start = 28483, finish = 30226},
-	{stat =          "SU20PSTAT_BOOL", start = 30227, finish = 30354},
-	{stat =     "SU20TATTOOSTAT_BOOL", start = 30355, finish = 30482},
-	{stat =                     "???", start = 30483, finish = 30514},
-	{stat =       "HISLANDPSTAT_BOOL", start = 30515, finish = 30706},
-	{stat =                     "???", start = 30707, finish = 31706},
-	{stat =         "TUNERPSTAT_BOOL", start = 31707, finish = 32282},
-	{stat =         "FIXERPSTAT_BOOL", start = 32283, finish = 32410},
-	{stat =    "FIXERTATTOOSTAT_BOOL", start = 32411, finish = 32474},
-	{stat =                     "???", start = 32475, finish = 34122},
-	{stat =          "GEN9PSTAT_BOOL", start = 34123, finish = 34250},
-	{stat =      "DLC12022PSTAT_BOOL", start = 34251, finish = 34762},
-	{stat =                     "???", start = 34763, finish = 36626},
-	{stat =      "DLC22022PSTAT_BOOL", start = 36627, finish = 36946},
-	{stat =                     "???", start = 36947, finish = 41250},
-	{stat = "DLC22022TATTOOSTAT_BOOL", start = 41251, finish = 41314},
-	{stat =      "DLC12023PSTAT_BOOL", start = 41315, finish = 42082},
-	{stat =                     "???", start = 42083, finish = 42106},
-	{stat =      "DLC22023PSTAT_BOOL", start = 42107, finish = 42298},
-	{stat =                     "???", start = 42299, finish = 51058},
-	{stat = "DLC22023TATTOOSTAT_BOOL", start = 51059, finish = 51186}
-}
 local cut_presets     	       = {
 	{id =  85, name =  "85 All"},
 	{id = 100, name = "100 All"}
 }
 local cut_presets_apartment = {
-	{id =  85 , name =  "85 All"                   },
-	{id = 100 , name = "100 All"                   },
-	{id = 7453, name = "7453 Fleeca Job (N.)"      },
-	{id = 2142, name = "2142 Prison Break (N.)"    },
-	{id = 1587, name = "1587 Humane Labs (N.)"     },
-	{id = 2121, name = "2121 Series A Funding (N.)"},
-	{id = 1000, name = "1000 Pacific Job (N.)"     }
+	{id =  85 , name =  "85 All (Any)"              },
+	{id = 100 , name = "100 All (Any)"              },
+	{id = 7453, name = "7453 Fleeca Job (Normal)"   },
+	{id = 2142, name = "2142 Prison Break (Normal)" },
+	{id = 1587, name = "1587 Humane Labs (Normal)"  },
+	{id = 2121, name = "2121 Series A Fun. (Normal)"},
+	{id = 1000, name = "1000 Pacific Job (Normal)"  }
 }
 local agency_contracts 	       = {
 	{id =    3, name = 			"The Nightclub"},
@@ -1167,10 +1170,6 @@ local function get_char_collectible(collectible, global, max_count)
 end
 
 --Local "set" Functions--
-
-local function set_apartment_players(bool)
-	apartment_players = (bool) and 2 or 4
-end
 
 local function set_cayo_perico_targets(cash, weed, coke, gold, where, target, value)
 	stats.set_int(MPX() .. "H4LOOT_CASH_" .. where, cash)
@@ -2958,64 +2957,101 @@ function create_apartment_submenu()
 
 	apartment_cuts = apartment:add_submenu("Cuts")
 
-	apartment_players = 4
-	apartment_cuts:add_toggle("The Fleeca Job", function() return states.b6 end, function() states.b6 = not states.b6 set_apartment_players(states.b6) end)
+	apartment_team = 2
+	apartment_cuts:add_array_item("Team", {"Duo", "Squad"}, function()
+		return states.i68
+	end, function(team)
+		states.i68 = team
+		if team == 1 then
+			apartment_team = 2
+			apartment_player1 = "On"
+			apartment_player2 = "On"
+			apartment_player3 = "Off"
+			apartment_player4 = "Off"
+		elseif team == 2 then
+			apartment_team = 4
+			apartment_player1 = "On"
+			apartment_player2 = "On"
+			apartment_player3 = "On"
+			apartment_player4 = "On"
+		end
+	end)
 
+	apartment_cut = 0
 	apartment_cuts:add_array_item("Presets", get_names_from_table(cut_presets_apartment), function()
 		return states.i4
 	end, function(preset)
 		states.i4 = preset
 		if preset ~= 1 then
-			local cut = get_id_from_table(cut_presets_apartment, preset - 1)
-			globals.set_int(ACg1, 100 - (cut * apartment_players))
-			globals.set_int(ACg2, cut)
-			local second_cut = (apartment_players == 2) and 0 or cut
-			globals_set_ints(ACg3, ACg4, 1, second_cut)
-			globals.set_int(ACFg1, 1)
-			globals.set_int(ACFg2, 4)
-			globals.set_int(ACFg2, 3)
+			apartment_cut = get_id_from_table(cut_presets_apartment, preset - 1)
+		else
+			apartment_cut = 0
 		end
 	end)
 
-	apartment_cuts:add_int_range("Player 1", 1, 0, 999, function()
-		return globals.get_int(ACg5) 
-	end, function(cut) 
-		globals.set_int(ACg1, 100 - (cut * apartment_players)) 
-		globals.set_int(ACg5, cut) 
+	apartment_player1 = "On"
+	apartment_cuts:add_bare_item("", function()
+		return "Player 1 |〔" .. apartment_player1 .. "〕"
+	end, function()
+		if apartment_player1 == "On" then
+			apartment_player1 = "Off"
+		else
+			apartment_player1 = "On"
+		end
+	end, null, null)
+
+	apartment_player2 = "On"
+	apartment_cuts:add_bare_item("", function() 
+		return "Player 2 |〔" .. apartment_player2 .. "〕"
+	end, function()
+		if apartment_player2 == "On" then
+			apartment_player2 = "Off"
+		else
+			apartment_player2 = "On"
+		end
+	end, null, null)
+
+	apartment_player3 = "Off"
+	apartment_cuts:add_bare_item("", function() 
+		return "Player 3 |〔" .. apartment_player3 .. "〕"
+	end, function()
+		if apartment_player3 == "On" then
+			apartment_player3 = "Off"
+		else
+			apartment_player3 = "On"
+		end
+	end, null, null)
+
+	apartment_player4 = "Off"
+	apartment_cuts:add_bare_item("", function() 
+		return "Player 4 |〔" .. apartment_player4 .. "〕"
+	end, function()
+		if apartment_player4 == "On" then
+			apartment_player4 = "Off"
+		else
+			apartment_player4 = "On"
+		end
+	end, null, null)
+
+	apartment_cuts:add_action("Apply Cuts", function()
+		globals.set_int(ACg1, 100 - (apartment_cut * apartment_team))
+		globals.set_int(ACg2, (apartment_player2 == "On") and apartment_cut or 0)
+		globals.set_int(ACg3, (apartment_player3 == "On") and apartment_cut or 0)
+		globals.set_int(ACg4, (apartment_player4 == "On") and apartment_cut or 0)
+		sleep(0.5)
 		globals.set_int(ACFg1, 1)
 		globals.set_int(ACFg2, 4)
 		globals.set_int(ACFg2, 3)
-	end)
-	apartment_cuts:add_int_range("Player 2", 1, 0, 999, function() 
-		return globals.get_int(ACg2) 
-	end, function(cut) 
-		globals.set_int(ACg2, cut) 
-		globals.set_int(ACFg1, 1)
-		globals.set_int(ACFg2, 4)
-		globals.set_int(ACFg2, 3)
-	end)
-	apartment_cuts:add_int_range("Player 3", 1, 0, 999, function() 
-		return globals.get_int(ACg3)
-	 end, function(cut)
-		globals.set_int(ACg3, cut) 
-		globals.set_int(ACFg1, 1)
-		globals.set_int(ACFg2, 4)
-		globals.set_int(ACFg2, 3)
-	end)
-	apartment_cuts:add_int_range("Player 4", 1, 0, 999, function() 
-		return globals.get_int(ACg4) 
-	end, function(cut) 
-		globals.set_int(ACg4, cut) 
-		globals.set_int(ACFg1, 1)
-		globals.set_int(ACFg2, 4)
-		globals.set_int(ACFg2, 3)
+		sleep(0.5)
+		globals.set_int(ACg5, (apartment_player1 == "On") and apartment_cut or 0)
 	end)
 
 	apartment_cuts:add_action(SPACE, null)
 
 	apartment_cuts_n = apartment_cuts:add_submenu(README)
-	apartment_cuts_n:add_action("                     The Fleeca Job:", null)
-	apartment_cuts_n:add_action("  Toggle this if you're playing fleeca heist", null)
+	apartment_cuts_n:add_action("                        Apply Cuts:", null)
+	apartment_cuts_n:add_action(" You'll see only your own cut changed; Ask", null)
+	apartment_cuts_n:add_action("  teammates if they see their updated cuts", null)
 
 	apartment_extra = apartment:add_submenu("Extra")
 
@@ -5051,10 +5087,10 @@ function create_special_cargo_vip_submenu()
 	special_cargo_vip_manual:add_array_item("⚠ Set Price", get_names_from_table(special_cargo_vip_prices), function()
 		return states.i55
 	end, function(price)
+		states.i55 = price
 		if price ~= 1 then
 			set_special_cargo_vip_price(get_id_from_table(special_cargo_vip_prices, price - 1))
 		end
-		states.i55 = price
 	end)
 
 	special_cargo_vip_manual:add_bare_item("", function()
@@ -6424,7 +6460,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.1 Beta")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.2 Beta")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")
