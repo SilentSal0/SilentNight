@@ -1,4 +1,4 @@
----[[ Developer: Silent, Last Changes: August 14 2024 ]]---
+---[[ Developer: Silent ]]---
 
 require_game_build(3274) -- GTA Online v1.69 (build 3274)
 
