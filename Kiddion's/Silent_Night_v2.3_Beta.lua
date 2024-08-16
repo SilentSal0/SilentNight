@@ -254,7 +254,7 @@ CMACLg1 = FMg + 26534                   -- casino master acquire chips limit 1 	
 CMACLg2 = FMg + 26535                   -- casino master acquire chips limit 2 		// Tunable: VC_CASINO_CHIP_MAX_BUY_PENTHOUSE
 HCVPg   = FMg + 22492                   -- hangar cargo vip payout 			   		// Tunable: SMUG_SELL_PRICE_PER_CRATE_MIXED
 HCVRCg  = FMg + 22475                   -- hangar cargo vip ron's cut 		   		// Tunable: SMUG_SELL_RONS_CUT
-CRg     = 2707037 + 36 					-- cash remover 					   		// Guide:   VEH_WHS_RP_A
+CRg     = 2707357 + 36 					-- cash remover 					   		// Guide:   VEH_WHS_RP_A
 NHCNSg  = FMg + 23969 					-- nightclub helper cargo n shipments  		// Tunable: BB_BUSINESS_BASIC_VALUE_CARGO
 NHSGg   = FMg + 23963 					-- nightclub helper sporting goods 	   		// Tunable: BB_BUSINESS_BASIC_VALUE_WEAPONS
 NHSAIg  = FMg + 23964 					-- nightclub helper s.a. imports 	   		// Tunable: BB_BUSINESS_BASIC_VALUE_COKE
@@ -276,7 +276,7 @@ BTEg2   = 4537456 						-- bypass transaction error 2
 BTEg3   = 4537457 						-- bypass transaction error 3
 CLg     = 1964419 						-- cheap loop 								// Guide:   MPPLY_CASINO_MEM_BONUS
 TTg     = 4537311 						-- trigger transaction
-NLSCg   = FMg + 23680 					-- night loop safe capacity  				// Tunable: NIGHTCLUBMAXSAFEVAL
+NLSCg   = FMg + 23680 					-- night loop safe capacity  				// Tunable: NIGHTCLUBMAXSAFEVALUE
 NLISg   = FMg + 23657 					-- night loop income start 	 				// Tunable: NIGHTCLUBINCOMEUPTOPOP5
 NLIEg   = FMg + 23676 					-- night loop income end	 				// Tunable: NIGHTCLUBINCOMEUPTOPOP100
 ORg     = 1962237 						-- orbital refund 							// Guide:   ORB_CAN_QUIT1
@@ -4209,8 +4209,9 @@ function create_bunker_crash_submenu()
 end
 
 function create_casino_master_submenu()
+	states.i42 = 0
 	casino_master:add_int_range("Acquire Chips Limit", 50000, 0, INT_MAX, function()
-		return states.i42 - 1
+		return states.i42
 	end, function(limit)
 		states.i42 = limit
 		globals_set_ints(CMACLg1, CMACLg2, 1, limit)
@@ -4262,18 +4263,6 @@ function create_casino_master_submenu()
 	casino_master_bj_n:add_action("       from people who use this method", null)
 
 	casino_master_lw = casino_master:add_submenu("Lucky Wheel")
-
-	casino_master_lw:add_array_item("Select Prize (before «S»)", get_names_from_table(lucky_wheel_prizes), function()
-		return states.i43
-	end, function(prize)
-		if localplayer ~= nil then
-			local prize_status = 117 + 1 + (get_localplayer_id() * 5)
-			if CLW:get_int(prize_status) ~= -1 then
-				states.i43 = prize
-				CLW:set_int(prize_status, get_id_from_table(lucky_wheel_prizes, prize - 1))
-			end
-		end
-	end)
 
 	casino_master_lw:add_array_item("⚠ Give Prize", get_names_from_table(lucky_wheel_prizes), function()
 		return states.i44
@@ -4532,6 +4521,7 @@ function create_money_editor_submenu()
 		end
 	end, null, null)
 
+	states.b12 = true
 	cash_remover:add_toggle("Reset Value", function() return states.b12 end, function() states.b12 = not states.b12 end)
 
 	cash_remover:add_action(SPACE, null)
@@ -5205,7 +5195,7 @@ function create_death_loop_submenu()
 			states.b27 = true
 		end
 		states.i58 		 = delay
-		cheap_loop_delay = delay
+		death_loop_delay = delay
 	end)
 
 	death_loop_r_cash = 0
@@ -5247,7 +5237,7 @@ function create_night_loop_submenu()
 	end, function()
 		states.b29 		 = not states.b29
 		states.i60 		 = 1.0
-		death_loop_delay = 1.0
+		night_loop_delay = 1.0
 	end)
 
 	night_loop:add_float_range("Custom Delay (s)", 0.1, 1.0, 5.0, function()
@@ -5303,9 +5293,9 @@ function create_op_loop_submenu()
 	op_loop:add_toggle("Default Delay (1s)", function()
 		return states.b31
 	end, function()
-		states.b31 		 = not states.b31
-		states.i62 		 = 1.0
-		death_loop_delay = 1.0
+		states.b31    = not states.b31
+		states.i62    = 1.0
+		op_loop_delay = 1.0
 	end)
 
 	op_loop:add_float_range("Custom Delay (s)", 0.1, 0.3, 5.0, function()
@@ -5316,8 +5306,8 @@ function create_op_loop_submenu()
 		else
 			states.b31 = true
 		end
-		states.i62 		 = delay
-		night_loop_delay = delay
+		states.i62    = delay
+		op_loop_delay = delay
 	end)
 
 	op_loop_r_cash = 0
@@ -6031,7 +6021,11 @@ end
 function create_lscm_submenu()
 	fac_unlocks_lscm = facilities_unlocks:add_submenu("LS Car Meet")
 
-	fac_unlocks_lscm:add_action("Unlock All", function() globals_set_ints(LSCMMg1, LSCMMg2, 1, 99999) end)
+	fac_unlocks_lscm:add_action("Unlock All", function() 
+		for i = LSCMMg1, LSCMMg2 do
+			globals.set_float(i, 99999.0)
+		end
+	end)
 
 	fac_unlocks_lscm:add_action("Unlock Trade Prices for Headlights", function() stats_set_packed_bools(24980, 24991, true) end)
 
@@ -6460,7 +6454,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.2 Beta")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.3 Beta")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")
