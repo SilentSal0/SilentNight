@@ -101,11 +101,11 @@ function stats_set_packed_bool(packed_bool, bool)
 	local stat_info = get_stat_info(packed_bool)
 	local stat = stat_info.stat
 	if stat ~= "???" then
-		local bool_start = stat_info.start
+		local bool_start  = stat_info.start
 		local bool_finish = stat_info.finish
-		local temp_bool = bool_start
-		local index = 0
-		local bit = nil
+		local temp_bool   = bool_start
+		local index       = 0
+		local bit         = nil
 		for _ = bool_start, bool_finish do
 			for j = 0, 63 do
 				if temp_bool + j == packed_bool then
@@ -160,7 +160,7 @@ end
 
 function get_names_from_table(tbl)
 	local names = {"Select"}
-	for _, item in ipairs(tbl) do
+	for _, item in pairs(tbl) do
 		table.insert(names, item.name)
 	end
 	return names
@@ -391,7 +391,7 @@ DIFl2    = 19746 + 1741 	-- doomsday instant finish 2
 DIFl3    = 27489 + 859 + 18 -- doomsday instant finish 3
 DIFl4    = 31621 + 69 		-- doomsday instant finish 4
 DIFl5    = 31621 + 97 		-- doomsday instant finish 5
-SYRSl    = 514 				-- salvage yard reload screen
+SYRSl    = 512 				-- salvage yard reload screen
 BCISl    = 1211 + 774 		-- bunker crash instant sell
 CMBJCl   = 116 				-- casino master bjackjack cards
 CMBJDl   = 846 				-- casino master bjackjack decks
@@ -1036,11 +1036,9 @@ local function reset_def_nums(from, to, step)
     end
 end
 
-local function teleport_heist_if_not_select(value, table)
-	if value ~= 1 then
-		local v = value - 2
-		teleport(table[v][1], table[v][2], table[v][3], 0, 0, 0)
-	end
+local function teleport_heist(value, table)
+	local v = value - 2
+	teleport(table[v][1], table[v][2], table[v][3], 0, 0, 0)
 end
 
 local function is_instant_finish_available(script_local)
@@ -3496,7 +3494,9 @@ function create_cayo_perico_submenu()
 		return states.i19
 	end, function(storage)
 		states.i19 = storage
-		teleport_heist_if_not_select(storage, cayo_perico_storages)
+		if storage ~= 1 then
+			teleport_heist(storage, cayo_perico_storages)
+		end
 	end)
 
 	cayo_perico_tps_c:add_action("Main Exit", function() teleport(4990.194824, -5716.448730, 18.580215, 0, 0, 0) end)
@@ -3509,21 +3509,27 @@ function create_cayo_perico_submenu()
 		return states.i20
 	end, function(loot)
 		states.i20 = loot
-		teleport_heist_if_not_select(loot, cayo_perico_airport)
+		if loot ~= 1 then
+			teleport_heist(loot, cayo_perico_airport)
+		end
 	end)
 
 	cayo_perico_tps_i:add_array_item("Main Dock", get_names_from_table(cayo_perico_m_dock), function()
 		return states.i21
 	end, function(loot)
 		states.i21 = loot
-		teleport_heist_if_not_select(loot, cayo_perico_m_dock)
+		if loot ~= 1 then
+			teleport_heist(loot, cayo_perico_m_dock)
+		end
 	end)
 
 	cayo_perico_tps_i:add_array_item("North Dock", get_names_from_table(cayo_perico_n_dock), function()
 		return states.i22
 	end, function(loot)
 		states.i22 = loot
-		teleport_heist_if_not_select(loot, cayo_perico_n_dock)
+		if loot ~= 1 then
+			teleport_heist(loot, cayo_perico_n_dock)
+		end
 	end)
 
 	cayo_perico_tps_i:add_action("Cord Field Loot", function() teleport(5330.717285, -5270.096191, 31.886055, 0, 0, 0) end)
@@ -3536,49 +3542,63 @@ function create_cayo_perico_submenu()
 		return states.i23
 	end, function(tower)
 		states.i23 = tower
-		teleport_heist_if_not_select(tower, cayo_perico_towers)
+		if tower ~= 1 then
+			teleport_heist(tower, cayo_perico_towers)
+		end
 	end)
 
 	cayo_perico_scope_out:add_array_item("Bolt Cutters", get_names_from_table(cayo_perico_bolts), function()
 		return states.i24
 	end, function(bolt)
 		states.i24 = bolt
-		teleport_heist_if_not_select(bolt, cayo_perico_bolts)
+		if bolt ~= 1 then
+			teleport_heist(bolt, cayo_perico_bolts)
+		end
 	end)
 
 	cayo_perico_scope_out:add_array_item("Cutting Powders", get_names_from_table(cayo_perico_powders), function()
 		return states.i25
 	end, function(powder)
 		states.i25 = powder
-		teleport_heist_if_not_select(powder, cayo_perico_powders)
+		if powder ~= 1 then
+			teleport_heist(powder, cayo_perico_powders)
+		end
 	end)
 
 	cayo_perico_scope_out:add_array_item("Grappling Hooks", get_names_from_table(cayo_perico_hooks), function()
 		return states.i26
 	end, function(hook)
 		states.i26 = hook
-		teleport_heist_if_not_select(hook, cayo_perico_hooks)
+		if hook ~= 1 then
+			teleport_heist(hook, cayo_perico_hooks)
+		end
 	end)
 
 	cayo_perico_scope_out:add_array_item("Guard Clothes", get_names_from_table(cayo_perico_clothes), function()
 		return states.i27
 	end, function(clothes)
 		states.i27 = clothes
-		teleport_heist_if_not_select(clothes, cayo_perico_clothes)
+		if clothes ~= 1 then
+			teleport_heist(clothes, cayo_perico_clothes)
+		end
 	end)
 
 	cayo_perico_scope_out:add_array_item("Signal Boxes", get_names_from_table(cayo_perico_boxes), function()
 		return states.i28
 	end, function(box)
 		states.i28 = box
-		teleport_heist_if_not_select(box, cayo_perico_boxes)
+		if box ~= 1 then
+			teleport_heist(box, cayo_perico_boxes)
+		end
 	end)
 
 	cayo_perico_scope_out:add_array_item("Supply Trucks", get_names_from_table(cayo_perico_trucks), function()
 		return states.i29
 	end, function(truck)
 		states.i29 = truck
-		teleport_heist_if_not_select(truck, cayo_perico_trucks)
+		if truck ~= 1 then
+			teleport_heist(truck, cayo_perico_trucks)
+		end
 	end)
 
 	cayo_perico:add_bare_item("", function()
@@ -3876,21 +3896,25 @@ function create_diamond_casino_submenu()
 		return states.i37
 	end, function(room)
 		states.i37 = room
-		teleport_heist_if_not_select(room, diamond_casino_rooms)
+		teleport_heist(room, diamond_casino_rooms)
 	end)
 
 	diamond_casino_tps:add_array_item("Vaults", get_names_from_table(diamond_casino_vaults), function()
 		return states.i38
 	end, function(vault)
 		states.i38 = vault
-		teleport_heist_if_not_select(vault, diamond_casino_vaults)
+		if vault ~= 1 then
+			teleport_heist(vault, diamond_casino_vaults)
+		end
 	end)
 
 	diamond_casino_tps:add_array_item("Mini-Vaults", get_names_from_table(diamond_casino_m_vaults), function()
 		return states.i39
 	end, function(mini_vault)
 		states.i39 = mini_vault
-		teleport_heist_if_not_select(mini_vault, diamond_casino_m_vaults)
+		if mini_vault ~= 1 then
+			teleport_heist(mini_vault, diamond_casino_m_vaults)
+		end
 	end)
 end
 
@@ -4006,16 +4030,16 @@ function create_salvage_yard_submenu()
 		end)
 
 		salvage_yard_veh_status:add_bare_item("", function()
-			local vehicle_status = globals.get_int(SYCKg + i)
+			local vehicle_status = globals.get_bool(SYCKg + i)
 			local status = "Unknown"
 			if vehicle_status ~= nil then
-				local status = (vehicle_status == 1) and "Claimable" or "Unclaimable"
+				status = (vehicle_status == true) and "Claimable" or "Unclaimable"
 			end
 			return "Vehicle " .. i .. " Status | 〔" .. status .. "〕"
 		end, function()
-			vehicle_status = globals.get_int(SYCKg + i)
+			local vehicle_status = globals.get_bool(SYCKg + i)
 			if vehicle_status ~= nil then
-				globals.set_int(SYCKg + i, (vehicle_status == 0) and 1 or 0)
+				globals.set_bool(SYCKg + i, (vehicle_status == false) and true or false)
 			end
 		end, null, null)
 
@@ -4548,8 +4572,12 @@ function create_money_editor_submenu()
 	end, function(selected_from)
 		states.i45 				  = selected_from
 		states.i46 				  = 1
-		money_editor_total_earned = get_id_from_table(money_editor_earned_from, selected_from - 1)
-		money_editor_total_spent  = "Not Selected"
+		if selected_from ~= 1 then
+			money_editor_total_earned = get_id_from_table(money_editor_earned_from, selected_from - 1)
+			money_editor_total_spent  = "Not Selected"
+		else
+			money_editor_total_earned = "Not Selected"
+		end
 	end)
 
 	money_editor_total_spent = "Not Selected"
@@ -4558,8 +4586,12 @@ function create_money_editor_submenu()
 	end, function(selected_spent)
 		states.i45 				  = 1
 		states.i46 				  = selected_spent
-		money_editor_total_earned = "Not Selected"
-		money_editor_total_spent  = get_id_from_table(money_editor_spent_on, selected_spent - 1)
+		if selected_spent ~= 1 then
+			money_editor_total_earned = "Not Selected"
+			money_editor_total_spent  = get_id_from_table(money_editor_spent_on, selected_spent - 1)
+		else
+			money_editor_total_spent = "Not Selected"
+		end
 	end)
 
 	totals:add_bare_item("", function()
@@ -4604,15 +4636,16 @@ function create_money_editor_submenu()
 	end, function()
 		if states.i45 == 1 then
 			if states.i46 == 2 then
-				stats.set_int(money_editor_total_earned, cash_to_change)
+				stats.set_int(money_editor_total_spent, cash_to_change)
 			else
-				stats.set_int(MPX() .. money_editor_total_earned, cash_to_change)
+				stats.set_int(MPX() .. money_editor_total_spent, cash_to_change)
 			end
 		else
 			if states.i45 == 2 then
-				stats.set_int(money_editor_total_spent, cash_to_change)
+				stats.set_int(money_editor_total_earned, cash_to_change)
 			else
-				stats.set_int(MPX() .. money_editor_total_from, cash_to_change)
+
+				stats.set_int(MPX() .. money_editor_total_earned, cash_to_change)
 			end
 		end
 		if states.b13 then
@@ -4621,6 +4654,7 @@ function create_money_editor_submenu()
 		end
 	end, null, null)
 
+	states.b13 = true
 	totals:add_toggle("Reset Value", function() return states.b13 end, function() states.b13 = not states.b13 end)
 
 	totals:add_action("Make Total Earned n Spent The Same", function() stats.set_int("MPPLY_TOTAL_EVC", stats.get_int("MPPLY_TOTAL_SVC")) end)
@@ -6454,7 +6488,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.3 Beta")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.4 Beta")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")
