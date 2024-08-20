@@ -395,8 +395,8 @@ function RenderMoneyTool()
                     if ClickGUI.BeginCustomChildWindow("Misc") then
                         ClickGUI.RenderFeature(nightclubOpen.hash)
                         ClickGUI.RenderFeature(nightclubCooldown.hash)
-                        ClickGUI.RenderFeature(nightclubTrigger.hash)
-                        ClickGUI.RenderFeature(nightclubSupplier.hash)
+                        --ClickGUI.RenderFeature(nightclubTrigger.hash)
+                        --ClickGUI.RenderFeature(nightclubSupplier.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
                     if ClickGUI.BeginCustomChildWindow("Popularity") then
@@ -430,7 +430,7 @@ function RenderMoneyTool()
                     end
                     ImGui.TableNextColumn()
                     if ClickGUI.BeginCustomChildWindow("Misc") then
-                        ClickGUI.RenderFeature(specialOpen.hash)
+                        --ClickGUI.RenderFeature(specialOpen.hash)
                         ClickGUI.RenderFeature(specialCooldown.hash)
                         ClickGUI.RenderFeature(specialSupply.hash)
                         ClickGUI.RenderFeature(specialSupplier.hash)

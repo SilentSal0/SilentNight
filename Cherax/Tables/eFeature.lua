@@ -1890,9 +1890,13 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Fills your Nightclub safe with money.",
                     func = function()
-                        eStat.MPX_CLUB_POPULARITY:Set(0)
-                        eTunable.Business.Nightclub.Safe.Income.Top5:Set(250000)
-                        eTunable.Business.Nightclub.Safe.MaxCapacity:Set(250000)
+                        local top5     = eGlobal.Business.Nightclub.Safe.Income.Top5.global
+                        local top100   = eGlobal.Business.Nightclub.Safe.Income.Top100.global
+                        local maxValue = 300000
+                        eTunable.Business.Nightclub.Safe.MaxCapacity:Set(maxValue)
+                        for i = top5, top100 do
+                            ScriptGlobal.SetInt(i, maxValue)
+                        end
                         eStat.MPX_CLUB_PAY_TIME_LEFT:Set(-1)
                     end
                 },
