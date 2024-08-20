@@ -1,4 +1,4 @@
-local ePackedBool = {
+ePackedBool = {
     HAS_PARSED = false,
     Business   = {
         CrateWarehouse = {

@@ -226,18 +226,8 @@ Script.QueueJob(function()
     local function AllParsed()
         return eTunable.HAS_PARSED and eGlobal.HAS_PARSED and eLocal.HAS_PARSED and eStat.HAS_PARSED and ePackedBool.HAS_PARSED and eTable.HAS_PARSED
     end
-    local tables = {
-        "Tunables",
-        "Globals",
-        "Locals",
-        "Stats",
-        "Packed Bools",
-        "Tables"
-    }
     while not AllParsed() do
         Script.Yield(1)
     end
-    for _, name in ipairs(tables) do
-        Logger.LogSN(name .. " have been parsed")
-    end
+    Logger.LogSN("Script has started successfully")
 end)

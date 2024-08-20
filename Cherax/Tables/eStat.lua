@@ -1,4 +1,4 @@
-local eStat = {
+eStat = {
     HAS_PARSED                      = false,
     MPPLY_LAST_MP_CHAR              = { type = "int",   stat = "MPPLY_LAST_MP_CHAR"             },
     SP0_TOTAL_CASH                  = { type = "int",   stat = "SP0_TOTAL_CASH"                 },

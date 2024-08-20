@@ -1,4 +1,4 @@
-local eTunable = {
+eTunable = {
     HAS_PARSED = false,
     Business = {
         Bunker = {

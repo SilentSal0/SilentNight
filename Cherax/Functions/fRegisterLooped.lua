@@ -1,10 +1,10 @@
-local function DiamondAutograbber()
+function DiamondAutograbber()
     if FeatureMgr.GetFeature(diamondAutograbber.hash):IsToggled() then
         diamondAutograbber.func()
     end
 end
 
-local function TurkishSupplier()
+function TurkishSupplier()
     if FeatureMgr.GetFeature(bunkerSupplier.hash):IsToggled() then
         bunkerSupplier.func()
         Script.Yield(1000)
@@ -19,7 +19,7 @@ local function TurkishSupplier()
     end
 end
 
-local function EasyLooper()
+function EasyLooper()
     if FeatureMgr.GetFeature(easyLoop5k.hash):IsToggled() then
         easyLoop5k.func()
         Script.Yield(1500)

@@ -1,4 +1,4 @@
-local eTable = {
+eTable = {
     HAS_PARSED = false,
     Business = {
         Hangar = {

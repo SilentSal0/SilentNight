@@ -1,4 +1,4 @@
-local function RenderHeistTool()
+function RenderHeistTool()
     if ImGui.BeginTabItem("Heist Tool") then
         if ImGui.BeginTabBar("Heist Tabs") then
             if ImGui.BeginTabItem("Agency") then
@@ -267,7 +267,7 @@ local function RenderHeistTool()
     end
 end
 
-local function RenderMoneyTool()
+function RenderMoneyTool()
     if ImGui.BeginTabItem("Money Tool") then
         if ImGui.BeginTabBar("Money Tabs") then
             if ImGui.BeginTabItem("Bunker") then
@@ -511,7 +511,7 @@ local function RenderMoneyTool()
     end
 end
 
-local function RenderSilentNight()
+function RenderSilentNight()
     if ImGui.BeginTabBar("Silent Night") then
         RenderHeistTool()
         RenderMoneyTool()

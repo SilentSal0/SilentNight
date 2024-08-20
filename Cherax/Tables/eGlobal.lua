@@ -1,4 +1,4 @@
-local eGlobal = {
+eGlobal = {
     HAS_PARSED = false,
     Business = {
         Base = {

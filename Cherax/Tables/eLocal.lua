@@ -1,4 +1,4 @@
-local eLocal = {
+eLocal = {
     HAS_PARSED = false,
     Business = {
         Bunker = {

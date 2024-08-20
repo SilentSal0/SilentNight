@@ -1,4 +1,4 @@
-local eFeature = {
+eFeature = {
     Heist = {
         Generic = {
             Cutscene = {
@@ -2210,7 +2210,6 @@ local eFeature = {
                             ScriptGlobal.SetInt(i, maxValue)
                         end
                         if safeValue <= maxValue and safeValue ~= 0 then
-                            Logger.LogSN("Collecting. Safe value is" .. tostring(safeValue))
                             eLocal.Business.Nightclub.Safe.Collect:Set(1)
                         elseif safeValue == 0 then
                             eStat.MPX_CLUB_PAY_TIME_LEFT:Set(-1)

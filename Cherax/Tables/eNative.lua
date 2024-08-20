@@ -1,4 +1,4 @@
-local function InvokeNative(returnType, hash)
+function InvokeNative(returnType, hash)
     local arg1, arg2
     if type(returnType) == "string" then
         arg1, arg2 = returnType, hash
@@ -10,7 +10,7 @@ local function InvokeNative(returnType, hash)
     end
 end
 
-local eNative = {
+eNative = {
     CUTSCENE = {
         STOP_CUTSCENE_IMMEDIATELY = InvokeNative(0xD220BDD222AC4A1E)
     },

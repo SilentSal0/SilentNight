@@ -46,7 +46,7 @@ FeatureMgr.AddFeature(nightclubApply.hash, nightclubApply.name, nightclubApply.t
         table.insert(args, FeatureMgr.GetFeature(nightclubToggles[i].hash):IsToggled())
     end
     for i = 1, 2 do
-        table.insert(args, FeatureMgr.GetFeature(nighclubStats[i].hash):GetIntValue())
+        table.insert(args, FeatureMgr.GetFeature(nightclubStats[i].hash):GetIntValue())
     end
     nightclubApply.func(table.unpack(args))
 end)

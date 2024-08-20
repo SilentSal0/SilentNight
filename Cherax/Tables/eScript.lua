@@ -1,4 +1,4 @@
-local eScript = {
+eScript = {
     Business = {
         Bunker    = { name = "appbunkerbusiness", stack = 4592, hash = Utils.Joaat("appbunkerBbusiness") },
         Hangar    = { name = "appsmuggler",       stack = 4592, hash = Utils.Joaat("appsmuggler")       },
