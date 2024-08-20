@@ -1,0 +1,108 @@
+FeatureMgr.AddFeature(specialPSelect.hash, specialPSelect.name, specialPSelect.type, specialPSelect.desc, function(f)
+end)
+    :SetDefaultValue(0)
+    :SetLimitValues(0, 6000000)
+    :SetStepSize(1000000)
+    :Reset()
+
+FeatureMgr.AddFeature(specialPApply.hash, specialPApply.name, specialPApply.type, specialPApply.desc, function(f)
+    local price = FeatureMgr.GetFeature(specialPSelect.hash):GetIntValue()
+    specialPApply.func(price)
+end)
+
+FeatureMgr.AddFeature(specialReset.hash, specialReset.name, specialReset.type, specialReset.desc, function(f)
+    FeatureMgr.GetFeature(specialPSelect.hash):SetIntValue(0)
+    specialReset.func()
+end)
+
+FeatureMgr.AddFeature(specialNoXp.hash, specialNoXp.name, specialNoXp.type, specialNoXp.desc, function(f)
+end)
+
+FeatureMgr.AddFeature(specialNoCrateback.hash, specialNoCrateback.name, specialNoCrateback.type, specialNoCrateback.desc, function(f)
+end)
+
+FeatureMgr.AddFeature(specialSell.hash, specialSell.name, specialSell.type, specialSell.desc, function(f)
+    local bools = {}
+    for i = 1, 2 do
+        table.insert(bools, FeatureMgr.GetFeature(specialSaleToggles[i].hash):IsToggled())
+    end
+    specialSell.func(table.unpack(bools))
+end)
+
+FeatureMgr.AddFeature(specialOpen.hash, specialOpen.name, specialOpen.type, specialOpen.desc, function(f)
+    specialOpen.func()
+end)
+
+FeatureMgr.AddFeature(specialCooldown.hash, specialCooldown.name, specialCooldown.type, specialCooldown.desc, function(f)
+    specialCooldown.func()
+end)
+
+FeatureMgr.AddFeature(specialSupply.hash, specialSupply.name, specialSupply.type, specialSupply.desc, function(f)
+    specialSupply.func()
+end)
+
+FeatureMgr.AddFeature(specialSupplier.hash, specialSupplier.name, specialSupplier.type, specialSupplier.desc, function(f)
+end)
+
+FeatureMgr.AddFeature(specialSelect.hash, specialSelect.name, specialSelect.type, specialSelect.desc, function(f)
+end)
+    :SetDefaultValue(0)
+    :SetLimitValues(0, 111)
+    :SetStepSize(1)
+    :Reset()
+
+FeatureMgr.AddFeature(specialBuy.hash, specialBuy.name, specialBuy.type, specialBuy.desc, function(f)
+    local amount = FeatureMgr.GetFeature(specialSelect.hash):GetIntValue()
+    specialBuy.func(amount)
+end)
+
+FeatureMgr.AddFeature(specialBuyMade.hash, specialBuyMade.name, specialBuyMade.type, specialBuyMade.desc, function(f)
+end)
+    :SetDefaultValue(eStat.MPX_LIFETIME_BUY_COMPLETE:Get())
+    :SetLimitValues(0, INT32_MAX)
+    :SetStepSize(10)
+    :Reset()
+
+FeatureMgr.AddFeature(specialBuyUndertaken.hash, specialBuyUndertaken.name, specialBuyUndertaken.type, specialBuyUndertaken.desc, function(f)
+end)
+    :SetDefaultValue(eStat.MPX_LIFETIME_BUY_UNDERTAKEN:Get())
+    :SetLimitValues(0, INT32_MAX)
+    :SetStepSize(10)
+    :Reset()
+
+FeatureMgr.AddFeature(specialSellMade.hash, specialSellMade.name, specialSellMade.type, specialSellMade.desc, function(f)
+end)
+    :SetDefaultValue(eStat.MPX_LIFETIME_SELL_COMPLETE:Get())
+    :SetLimitValues(0, INT32_MAX)
+    :SetStepSize(10)
+    :Reset()
+
+FeatureMgr.AddFeature(specialSellUndertaken.hash, specialSellUndertaken.name, specialSellUndertaken.type, specialSellUndertaken.desc, function(f)
+end)
+    :SetDefaultValue(eStat.MPX_LIFETIME_SELL_UNDERTAKEN:Get())
+    :SetLimitValues(0, INT32_MAX)
+    :SetStepSize(10)
+    :Reset()
+
+FeatureMgr.AddFeature(specialEarnings.hash, specialEarnings.name, specialEarnings.type, specialEarnings.desc, function(f)
+end)
+    :SetDefaultValue(eStat.MPX_LIFETIME_CONTRA_EARNINGS:Get())
+    :SetLimitValues(0, INT32_MAX)
+    :SetStepSize(1000000)
+    :Reset()
+
+for i = 1, 3 do
+    FeatureMgr.AddFeature(specialToggles[i].hash, specialToggles[i].name, specialToggles[i].type, specialToggles[i].desc, function(f)
+    end)
+end
+
+FeatureMgr.AddFeature(specialApply.hash, specialApply.name, specialApply.type, specialApply.desc, function(f)
+    local args = {}
+    for i = 1, 3 do
+        table.insert(args, FeatureMgr.GetFeature(specialToggles[i].hash):IsToggled())
+    end
+    for i = 1, 5 do
+        table.insert(args, FeatureMgr.GetFeature(specialStats[i].hash):GetIntValue())
+    end
+    specialApply.func(table.unpack(args))
+end)
