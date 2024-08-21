@@ -1,5 +1,3 @@
--- Require Script --
-require("Silent-data")
 -- Define MPX as a function that returns the appropriate prefix string
 local function MPX()
     return "MP" .. stats.get_int("MPPLY_LAST_MP_CHAR") .. "_"
