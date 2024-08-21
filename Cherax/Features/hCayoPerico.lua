@@ -59,10 +59,6 @@ FeatureMgr.AddFeature(cayoComplete.hash, cayoComplete.name, cayoComplete.type, c
     cayoComplete.func(difficulty, approach, loadout, primaryTarget, compoundTarget, compoundAmount, artsAmount, islandTarget, islandAmount)
 end)
 
-FeatureMgr.AddFeature(cayoFinish.hash, cayoFinish.name, cayoFinish.type, cayoFinish.desc, function(f)
-    cayoFinish.func()
-end)
-
 FeatureMgr.AddFeature(cayoReload.hash, cayoReload.name, cayoReload.type, cayoReload.desc, function(f)
     cayoReload.func()
 end)
@@ -73,6 +69,14 @@ end)
 
 FeatureMgr.AddFeature(cayoTeamCooldown.hash, cayoTeamCooldown.name, cayoTeamCooldown.type, cayoTeamCooldown.desc, function(f)
     cayoTeamCooldown.func()
+end)
+
+FeatureMgr.AddFeature(cayoForce.hash, cayoForce.name, cayoForce.type, cayoForce.desc, function(f)
+    cayoForce.func()
+end)
+
+FeatureMgr.AddFeature(cayoFinish.hash, cayoFinish.name, cayoFinish.type, cayoFinish.desc, function(f)
+    cayoFinish.func()
 end)
 
 FeatureMgr.AddFeature(cayoFingerprintHack.hash, cayoFingerprintHack.name, cayoFingerprintHack.type, cayoFingerprintHack.desc, function(f)

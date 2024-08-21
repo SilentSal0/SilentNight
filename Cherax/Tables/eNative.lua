@@ -26,7 +26,8 @@ eNative = {
         NET_GAMESERVER_TRANSFER_WALLET_TO_BANK = InvokeNative("Bool", 0xC2F7FE5309181C7D)
     },
     NETWORK = {
-        NETWORK_IS_SESSION_STARTED = InvokeNative("Bool", 0x9DE624D2FC4B603F),
+        NETWORK_GET_HOST_OF_SCRIPT = InvokeNative("Int", 0x1D6A14F1F9A736FC),
+        NETWORK_IS_SESSION_STARTED = InvokeNative("Bool", 0x9DE624D2FC4B603F)
     },
     PAD = {
         ENABLE_CONTROL_ACTION        = InvokeNative(0x351220255D64C155),

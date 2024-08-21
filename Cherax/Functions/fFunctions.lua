@@ -26,6 +26,10 @@ function IsInSessionAlone()
     return eNative.PLAYER.GET_NUMBER_OF_PLAYERS() == 1
 end
 
+function EmptySession()
+    FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+end
+
 function IsScriptRunning(scriptName)
     return eNative.SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(Utils.Joaat(scriptName)) > 0
 end
@@ -44,6 +48,10 @@ function StartScript(scriptName, stackSize)
     eNative.SYSTEM.START_NEW_SCRIPT(scriptName, stackSize or 0)
     eNative.SCRIPT.SET_SCRIPT_AS_NO_LONGER_NEEDED(scriptName)
     return true
+end
+
+function ForceScriptHost()
+    FeatureMgr.GetFeatureByName("Force Script Host"):OnClick()
 end
 
 function GetCardName(index)

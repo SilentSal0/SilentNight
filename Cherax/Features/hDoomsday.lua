@@ -16,6 +16,10 @@ FeatureMgr.AddFeature(doomsdayReload.hash, doomsdayReload.name, doomsdayReload.t
     doomsdayReload.func()
 end)
 
+FeatureMgr.AddFeature(doomsdayForce.hash, doomsdayForce.name, doomsdayForce.type, doomsdayForce.desc, function(f)
+    doomsdayForce.func()
+end)
+
 FeatureMgr.AddFeature(doomsdayFinish.hash, doomsdayFinish.name, doomsdayFinish.type, doomsdayFinish.desc, function(f)
     doomsdayFinish.func()
 end)

@@ -20,6 +20,14 @@ FeatureMgr.AddFeature(miscEditRemove.hash, miscEditRemove.name, miscEditRemove.t
     miscEditRemove.func(amount)
 end)
 
+FeatureMgr.AddFeature(miscEditDepositAll.hash, miscEditDepositAll.name, miscEditDepositAll.type, miscEditDepositAll.desc, function(f)
+    miscEditDepositAll.func()
+end)
+
+FeatureMgr.AddFeature(miscEditWithdrawAll.hash, miscEditWithdrawAll.name, miscEditWithdrawAll.type, miscEditWithdrawAll.desc, function(f)
+    miscEditWithdrawAll.func()
+end)
+
 FeatureMgr.AddFeature(miscStorySelect.hash, miscStorySelect.name, miscStorySelect.type, miscStorySelect.desc, function(f)
 end)
     :SetDefaultValue(eStat.SP0_TOTAL_CASH:Get())

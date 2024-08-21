@@ -62,6 +62,12 @@ eGlobal = {
                     Local  = { type = "int", global = 1930926 + 3008 + 4 }
                 }
             },
+            Ready  = { 
+                Player1 = { type = "int", global = 2657971 + 1 + (0 * 465) + 267 },
+                Player2 = { type = "int", global = 2657971 + 1 + (1 * 465) + 267 },
+                Player3 = { type = "int", global = 2657971 + 1 + (2 * 465) + 267 },
+                Player4 = { type = "int", global = 2657971 + 1 + (3 * 465) + 267 }
+            },
             Reload = { type = "int", global = 1928993                             },
             Jobs   = { type = "int", global = 1877285 + (PLAYER_ID * 77 + 1) + 76 }
         },
@@ -71,6 +77,12 @@ eGlobal = {
                 Player2 = { type = "int", global = 1971648 + 831 + 56 + 2 },
                 Player3 = { type = "int", global = 1971648 + 831 + 56 + 3 },
                 Player4 = { type = "int", global = 1971648 + 831 + 56 + 4 }
+            },
+            Ready  = { 
+                Player1 = { type = "int", global = 1972761 + (0 * 27) + 7 + 1 },
+                Player2 = { type = "int", global = 1972761 + (1 * 27) + 7 + 2 },
+                Player3 = { type = "int", global = 1972761 + (2 * 27) + 7 + 3 },
+                Player4 = { type = "int", global = 1972761 + (3 * 27) + 7 + 4 }
             }
         },
         DiamondCasino = {
@@ -79,6 +91,12 @@ eGlobal = {
                 Player2 = { type = "int", global = 1964849 + 1497 + 736 + 92 + 2 },
                 Player3 = { type = "int", global = 1964849 + 1497 + 736 + 92 + 3 },
                 Player4 = { type = "int", global = 1964849 + 1497 + 736 + 92 + 4 }
+            },
+            Ready  = { 
+                Player1 = { type = "int", global = 1969213 + (0 * 68) + 7 + 1 },
+                Player2 = { type = "int", global = 1969213 + (1 * 68) + 7 + 2 },
+                Player3 = { type = "int", global = 1969213 + (2 * 68) + 7 + 3 },
+                Player4 = { type = "int", global = 1969213 + (3 * 68) + 7 + 4 }
             }
         },
         Doomsday = {
@@ -87,6 +105,12 @@ eGlobal = {
                 Player2 = { type = "int", global = 1960755 + 812 + 50 + 2 },
                 Player3 = { type = "int", global = 1960755 + 812 + 50 + 3 },
                 Player4 = { type = "int", global = 1960755 + 812 + 50 + 4 }
+            },
+            Ready  = { 
+                Player1 = { type = "int", global = 1882633 + (0 * 146) + 43 + 11 + 1 },
+                Player2 = { type = "int", global = 1882633 + (1 * 146) + 43 + 11 + 2 },
+                Player3 = { type = "int", global = 1882633 + (2 * 146) + 43 + 11 + 3 },
+                Player4 = { type = "int", global = 1882633 + (3 * 146) + 43 + 11 + 4 },
             }
         },
         SalvageYard = {

@@ -102,6 +102,10 @@ FeatureMgr.AddFeature(diamondCooldown.hash, diamondCooldown.name, diamondCooldow
     diamondCooldown.func()
 end)
 
+FeatureMgr.AddFeature(diamondForce.hash, diamondForce.name, diamondForce.type, diamondForce.desc, function(f)
+    diamondForce.func()
+end)
+
 FeatureMgr.AddFeature(diamondFingerprintHack.hash, diamondFingerprintHack.name, diamondFingerprintHack.type, diamondFingerprintHack.desc, function(f)
     diamondFingerprintHack.func()
 end)

@@ -6,6 +6,10 @@ FeatureMgr.AddFeature(apartmentReload.hash, apartmentReload.name, apartmentReloa
     apartmentReload.func()
 end)
 
+FeatureMgr.AddFeature(apartmentForce.hash, apartmentForce.name, apartmentForce.type, apartmentForce.desc, function(f)
+    apartmentForce.func()
+end)
+
 FeatureMgr.AddFeature(apartmentFinish.hash, apartmentFinish.name, apartmentFinish.type, apartmentFinish.desc, function(f)
     apartmentFinish.func()
 end)

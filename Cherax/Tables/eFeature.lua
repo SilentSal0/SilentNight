@@ -53,6 +53,18 @@ eFeature = {
                 }
             },
             Misc = {
+                Finish = {
+                    hash = Utils.Joaat("SN_Agency_Finish"),
+                    name = "Instant Finish",
+                    type = eFeatureType.Button,
+                    desc = "Finishes the heist instantly. Use after the heist has started.",
+                    func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
+                        eLocal.Heist.Agency.Finish1:Set(51338752)
+                        eLocal.Heist.Agency.Finish2:Set(50)
+                    end
+                },
                 Cooldown = {
                     hash = Utils.Joaat("SN_Agency_Cooldown"),
                     name = "Kill Cooldown",
@@ -60,16 +72,6 @@ eFeature = {
                     desc = "Skips the heist's cooldown.",
                     func = function()
                         eTunable.Heist.Agency.Cooldown:Set(0)
-                    end
-                },
-                Finish = {
-                    hash = Utils.Joaat("SN_Agency_Finish"),
-                    name = "Instant Finish",
-                    type = eFeatureType.Button,
-                    desc = "Finishes the heist instantly. Use after the heist has started.",
-                    func = function()
-                        eLocal.Heist.Agency.Finish1:Set(51338752)
-                        eLocal.Heist.Agency.Finish2:Set(50)
                     end
                 }
             },
@@ -87,91 +89,6 @@ eFeature = {
                     desc = "Applies the selected payout. Use after the heist has started.",
                     func = function(payout)
                         eTunable.Heist.Agency.Payout:Set(payout)
-                    end
-                }
-            }
-        },
-        AutoShop = {
-            Preps = {
-                Contract = {
-                    hash = Utils.Joaat("SN_AutoShop_Contract"),
-                    name = "Contract",
-                    type = eFeatureType.Combo,
-                    desc = "Select the desired contract.",
-                    list = eTable.Heist.AutoShop.Contracts
-                },
-                Complete = {
-                    hash = Utils.Joaat("SN_AutoShop_Complete"),
-                    name = "Apply & Complete Preps",
-                    type = eFeatureType.Button,
-                    desc = "Applies all changes and completes all preparations. Also, redraws the planning board.",
-                    func = function(contract)
-                        eStat.MPX_TUNER_CURRENT:Set(contract)
-                        eStat.MPX_TUNER_GEN_BS:Set((contract == 1) and 4351 or 12543)
-                        eLocal.Heist.AutoShop.Reload:Set(2)
-                    end
-                },
-                Reload = {
-                    hash = Utils.Joaat("SN_AutoShop_Reload"),
-                    name = "Redraw Board",
-                    type = eFeatureType.Button,
-                    desc = "Redraws the planning board.",
-                    func = function()
-                        eLocal.Heist.AutoShop.Reload:Set(2)
-                    end
-                }
-            },
-            Misc = {
-                Cooldown = {
-                    hash = Utils.Joaat("SN_AutoShop_Cooldown"),
-                    name = "Kill Cooldown",
-                    type = eFeatureType.Button,
-                    desc = "Skips the heist's cooldown.",
-                    func = function()
-                        eStat.MPX_TUNER_CONTRACT0_POSIX:Set(0)
-                        eStat.MPX_TUNER_CONTRACT1_POSIX:Set(0)
-                        eStat.MPX_TUNER_CONTRACT2_POSIX:Set(0)
-                        eStat.MPX_TUNER_CONTRACT3_POSIX:Set(0)
-                        eStat.MPX_TUNER_CONTRACT4_POSIX:Set(0)
-                        eStat.MPX_TUNER_CONTRACT5_POSIX:Set(0)
-                        eStat.MPX_TUNER_CONTRACT6_POSIX:Set(0)
-                        eStat.MPX_TUNER_CONTRACT7_POSIX:Set(0)
-                        eTunable.Heist.AutoShop.Cooldown:Set(0)
-                    end
-                },
-                Finish = {
-                    hash = Utils.Joaat("SN_AutoShop_Finish"),
-                    name = "Instant Finish",
-                    type = eFeatureType.Button,
-                    desc = "Finishes the heist instantly. Use after the heist has started.",
-                    func = function()
-                        eLocal.Heist.AutoShop.Finish1:Set(51338977)
-                        eLocal.Heist.AutoShop.Finish2:Set(101)
-                    end
-                }
-            },
-            Payout = {
-                Select = {
-                    hash = Utils.Joaat("SN_AutoShop_Select"),
-                    name = "Payout",
-                    type = eFeatureType.InputInt,
-                    desc = "Select the desired payout."
-                },
-                Apply = {
-                    hash = Utils.Joaat("SN_AutoShop_Apply"),
-                    name = "Apply Payout",
-                    type = eFeatureType.Button,
-                    desc = "Applies the selected payout. Use after the heist has started.",
-                    func = function(payout)
-                        eTunable.Heist.AutoShop.Payout.First:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Second:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Third:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Fourth:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Fifth:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Sixth:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Seventh:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Eight:Set(payout)
-                        eTunable.Heist.AutoShop.Payout.Fee:Set(0)
                     end
                 }
             }
@@ -198,12 +115,27 @@ eFeature = {
                 },
             },
             Misc = {
+                Force = {
+                    hash = Utils.Joaat("SN_Apartment_Force"),
+                    name = "Force Ready",
+                    type = eFeatureType.Button,
+                    desc = "Forces everyone to be «Ready».",
+                    func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
+                        for i = 2, 4 do
+                            eGlobal.Heist.Apartment.Ready["Player" .. i]:Set(6)
+                        end
+                    end
+                },
                 Finish = {
                     hash = Utils.Joaat("SN_Apartment_Finish"),
                     name = "Instant Finish",
                     type = eFeatureType.Button,
                     desc = "Finishes the heist instantly. Use after the heist has started.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         eLocal.Heist.Apartment.Finish1:Set(80)
                         eLocal.Heist.Apartment.Finish2:Set(10000000)
                         eLocal.Heist.Apartment.Finish3:Set(99999)
@@ -341,6 +273,93 @@ eFeature = {
                 }
             }
         },
+        AutoShop = {
+            Preps = {
+                Contract = {
+                    hash = Utils.Joaat("SN_AutoShop_Contract"),
+                    name = "Contract",
+                    type = eFeatureType.Combo,
+                    desc = "Select the desired contract.",
+                    list = eTable.Heist.AutoShop.Contracts
+                },
+                Complete = {
+                    hash = Utils.Joaat("SN_AutoShop_Complete"),
+                    name = "Apply & Complete Preps",
+                    type = eFeatureType.Button,
+                    desc = "Applies all changes and completes all preparations. Also, redraws the planning board.",
+                    func = function(contract)
+                        eStat.MPX_TUNER_CURRENT:Set(contract)
+                        eStat.MPX_TUNER_GEN_BS:Set((contract == 1) and 4351 or 12543)
+                        eLocal.Heist.AutoShop.Reload:Set(2)
+                    end
+                },
+                Reload = {
+                    hash = Utils.Joaat("SN_AutoShop_Reload"),
+                    name = "Redraw Board",
+                    type = eFeatureType.Button,
+                    desc = "Redraws the planning board.",
+                    func = function()
+                        eLocal.Heist.AutoShop.Reload:Set(2)
+                    end
+                }
+            },
+            Misc = {
+                Finish = {
+                    hash = Utils.Joaat("SN_AutoShop_Finish"),
+                    name = "Instant Finish",
+                    type = eFeatureType.Button,
+                    desc = "Finishes the heist instantly. Use after the heist has started.",
+                    func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
+                        eLocal.Heist.AutoShop.Finish1:Set(51338977)
+                        eLocal.Heist.AutoShop.Finish2:Set(101)
+                    end
+                },
+                Cooldown = {
+                    hash = Utils.Joaat("SN_AutoShop_Cooldown"),
+                    name = "Kill Cooldown",
+                    type = eFeatureType.Button,
+                    desc = "Skips the heist's cooldown.",
+                    func = function()
+                        eStat.MPX_TUNER_CONTRACT0_POSIX:Set(0)
+                        eStat.MPX_TUNER_CONTRACT1_POSIX:Set(0)
+                        eStat.MPX_TUNER_CONTRACT2_POSIX:Set(0)
+                        eStat.MPX_TUNER_CONTRACT3_POSIX:Set(0)
+                        eStat.MPX_TUNER_CONTRACT4_POSIX:Set(0)
+                        eStat.MPX_TUNER_CONTRACT5_POSIX:Set(0)
+                        eStat.MPX_TUNER_CONTRACT6_POSIX:Set(0)
+                        eStat.MPX_TUNER_CONTRACT7_POSIX:Set(0)
+                        eTunable.Heist.AutoShop.Cooldown:Set(0)
+                    end
+                }
+            },
+            Payout = {
+                Select = {
+                    hash = Utils.Joaat("SN_AutoShop_Select"),
+                    name = "Payout",
+                    type = eFeatureType.InputInt,
+                    desc = "Select the desired payout."
+                },
+                Apply = {
+                    hash = Utils.Joaat("SN_AutoShop_Apply"),
+                    name = "Apply Payout",
+                    type = eFeatureType.Button,
+                    desc = "Applies the selected payout. Use after the heist has started.",
+                    func = function(payout)
+                        eTunable.Heist.AutoShop.Payout.First:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Second:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Third:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Fourth:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Fifth:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Sixth:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Seventh:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Eight:Set(payout)
+                        eTunable.Heist.AutoShop.Payout.Fee:Set(0)
+                    end
+                }
+            }
+        },
         CayoPerico = {
             Preps = {
                 Difficulty = {
@@ -466,29 +485,18 @@ eFeature = {
                 }
             },
             Misc = {
-                Cooldown = {
-                    Solo = {
-                        hash = Utils.Joaat("SN_CayoPerico_SoloCooldown"),
-                        name = "Kill Cooldown (after solo)",
-                        type = eFeatureType.Button,
-                        desc = "Skips the heist's cooldown after you have played solo.",
-                        func = function()
-                            eStat.MPX_H4_TARGET_POSIX:Set(1659643454)
-                            eStat.MPX_H4_COOLDOWN:Set(0)
-                            eStat.MPX_H4_COOLDOWN_HARD:Set(0)
+                Force = {
+                    hash = Utils.Joaat("SN_CayoPerico_Force"),
+                    name = "Force Ready",
+                    type = eFeatureType.Button,
+                    desc = "Forces everyone to be «Ready».",
+                    func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
+                        for i = 2, 4 do
+                            eGlobal.Heist.CayoPerico.Ready["Player" .. i]:Set(1)
                         end
-                    },
-                    Team = {
-                        hash = Utils.Joaat("SN_CayoPerico_TeamCooldown"),
-                        name = "Kill Cooldown (after team)",
-                        type = eFeatureType.Button,
-                        desc = "Skips the heist's cooldown after you have played with a team.",
-                        func = function()
-                            eStat.MPX_H4_TARGET_POSIX:Set(1659429119)
-                            eStat.MPX_H4_COOLDOWN:Set(0)
-                            eStat.MPX_H4_COOLDOWN_HARD:Set(0)
-                        end
-                    }
+                    end
                 },
                 Finish = {
                     hash = Utils.Joaat("SN_CayoPerico_Finish"),
@@ -496,6 +504,8 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Finishes the heist instantly. Use after the heist has started.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         eLocal.Heist.CayoPerico.Finish1:Set(9)
                         eLocal.Heist.CayoPerico.Finish2:Set(50)
                     end
@@ -535,6 +545,30 @@ eFeature = {
                     func = function()
                         eTunable.Heist.CayoPerico.Bag.MaxCapacity:Set(99999)
                     end
+                },
+                Cooldown = {
+                    Solo = {
+                        hash = Utils.Joaat("SN_CayoPerico_SoloCooldown"),
+                        name = "Kill Cooldown (after solo)",
+                        type = eFeatureType.Button,
+                        desc = "Skips the heist's cooldown after you have played solo.",
+                        func = function()
+                            eStat.MPX_H4_TARGET_POSIX:Set(1659643454)
+                            eStat.MPX_H4_COOLDOWN:Set(0)
+                            eStat.MPX_H4_COOLDOWN_HARD:Set(0)
+                        end
+                    },
+                    Team = {
+                        hash = Utils.Joaat("SN_CayoPerico_TeamCooldown"),
+                        name = "Kill Cooldown (after team)",
+                        type = eFeatureType.Button,
+                        desc = "Skips the heist's cooldown after you have played with a team.",
+                        func = function()
+                            eStat.MPX_H4_TARGET_POSIX:Set(1659429119)
+                            eStat.MPX_H4_COOLDOWN:Set(0)
+                            eStat.MPX_H4_COOLDOWN_HARD:Set(0)
+                        end
+                    }
                 },
                 Unlock = {
                     hash = Utils.Joaat("SN_CayoPerico_Unlock"),
@@ -718,14 +752,17 @@ eFeature = {
                 }
             },
             Misc = {
-                Cooldown = {
-                    hash = Utils.Joaat("SN_DiamondCasino_Cooldown"),
-                    name = "Kill Cooldown",
+                Force = {
+                    hash = Utils.Joaat("SN_DiamondCasino_Force"),
+                    name = "Force Ready",
                     type = eFeatureType.Button,
-                    desc = "Skips the heist's cooldown.",
+                    desc = "Forces everyone to be «Ready».",
                     func = function()
-                        eStat.MPX_H3_COMPLETEDPOSIX:Set(-1)
-                        eStat.MPPLY_H3_COOLDOWN:Set(-1)
+                        ForceScriptHost()
+                        Script.Yield(1000)
+                        for i = 2, 4 do
+                            eGlobal.Heist.DiamondCasino.Ready["Player" .. i]:Set(1)
+                        end
                     end
                 },
                 FingerprintHack = {
@@ -768,6 +805,16 @@ eFeature = {
                         end
                     end
                 },
+                Cooldown = {
+                    hash = Utils.Joaat("SN_DiamondCasino_Cooldown"),
+                    name = "Kill Cooldown",
+                    type = eFeatureType.Button,
+                    desc = "Skips the heist's cooldown.",
+                    func = function()
+                        eStat.MPX_H3_COMPLETEDPOSIX:Set(-1)
+                        eStat.MPPLY_H3_COOLDOWN:Set(-1)
+                    end
+                },
                 Unlock = {
                     hash = Utils.Joaat("SN_DiamondCasino_Unlock"),
                     name = "Unlock All POI",
@@ -778,6 +825,7 @@ eFeature = {
                         eStat.MPX_H3OPT_ACCESSPOINTS:Set(-1)
                         eStat.MPX_CAS_HEIST_NOTS:Set(-1)
                         eStat.MPX_CAS_HEIST_FLOW:Set(-1)
+                        eLocal.Heist.DiamondCasino.Reload:Set(2)
                     end
                 }
             },
@@ -882,12 +930,27 @@ eFeature = {
                 }
             },
             Misc = {
+                Force = {
+                    hash = Utils.Joaat("SN_Doomsday_Force"),
+                    name = "Force Ready",
+                    type = eFeatureType.Button,
+                    desc = "Forces everyone to be «Ready».",
+                    func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
+                        for i = 2, 4 do
+                            eGlobal.Heist.Doomsday.Ready["Player" .. i]:Set(1)
+                        end
+                    end
+                },
                 Finish = {
                     hash = Utils.Joaat("SN_Doomsday_Finish"),
                     name = "Instant Finish",
                     type = eFeatureType.Button,
                     desc = "Finishes the heist instantly. Use after the heist has started.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         eLocal.Heist.Doomsday.Finish1:Set(12)
                         eLocal.Heist.Doomsday.Finish2:Set(150)
                         eLocal.Heist.Doomsday.Finish3:Set(99999)
@@ -1271,7 +1334,7 @@ eFeature = {
                     desc = "Applies the maximum price for your stock. Sell to Blaine County only.",
                     func = function()
                         if not IsInSessionAlone() then
-                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                            EmptySession()
                         end
                         eTunable.Business.Bunker.Product.Value:Set(math.floor(2500000 / eStat.MPX_PRODTOTALFORFACTORY5:Get()))
                         eTunable.Business.Bunker.Product.StaffUpgraded:Set(0)
@@ -1306,7 +1369,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Bunker_Open"),
                     name = "Open Laptop",
                     type = eFeatureType.Button,
-                    desc = "Opens the bunker's laptop screen.",
+                    desc = "Opens the Bunker's laptop screen.",
                     func = function()
                         StartScript(eScript.Business.Bunker.name, eScript.Business.Bunker.stack)
                     end
@@ -1315,7 +1378,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Bunker_Supply"),
                     name = "Get Supplies",
                     type = eFeatureType.Button,
-                    desc = "Gets supplies for your bunker.",
+                    desc = "Gets supplies for your Bunker.",
                     func = function()
                         eGlobal.Business.Supplies.Bunker:Set(1)
                     end
@@ -1334,7 +1397,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Bunker_Supplier"),
                     name = "Turkish Supplier",
                     type = eFeatureType.Toggle,
-                    desc = "Fills your bunker stock. Also, gets supplies for your bunker repeatedly.",
+                    desc = "Fills your Bunker stock. Also, gets supplies for your Bunker repeatedly.",
                     func = function()
                         eGlobal.Business.Supplies.Bunker:Set(1)
                         eGlobal.Business.Bunker.Production.Trigger1:Set(0)
@@ -1416,7 +1479,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Casino_SlotsWin"),
                     name = "Rig Slots",
                     type = eFeatureType.Button,
-                    desc = "Forces the slots to give you the jackpot. Might be unsafe.",
+                    desc = "UNSAFE. Forces the slots to give you the jackpot. Might be unsafe.",
                     func = function()
                         local randomResultTable = eLocal.World.Casino.Slots.RandomResultTable.vLocal
                         for i = 3, 196 do
@@ -1448,6 +1511,8 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Forces the ball to land on black 13. Use after the betting is finished.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         local masterTable   = eLocal.World.Casino.Roulette.MasterTable.vLocal
                         local outcomesTable = eLocal.World.Casino.Roulette.OutcomesTable.vLocal
                         local ballTable     = eLocal.World.Casino.Roulette.BallTable.vLocal
@@ -1462,6 +1527,8 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Forces the ball to land on red 16. Use after the betting is finished.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         local masterTable   = eLocal.World.Casino.Roulette.MasterTable.vLocal
                         local outcomesTable = eLocal.World.Casino.Roulette.OutcomesTable.vLocal
                         local ballTable     = eLocal.World.Casino.Roulette.BallTable.vLocal
@@ -1502,6 +1569,8 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Forces the dealer's hand to lose. Also, reveals the dealer's cards.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         if eLocal.World.Casino.Blackjack.CurrentTable:Get() ~= -1 then
                             eLocal.World.Casino.Blackjack.Dealer.FirstCard:Set(11)
                             eLocal.World.Casino.Blackjack.Dealer.SecondCard:Set(12)
@@ -1552,6 +1621,8 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Forces your hand to win. Also, reveals your and the dealer's cards.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         local id = 0
                         SetPokerCards(id, 50, 51, 52)
                     end
@@ -1562,6 +1633,8 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Forces all hands at the current table (except dealer's) to win. Also, reveals your and the dealer's cards.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         if eLocal.World.Casino.Poker.CurrentTable:Get() ~= -1 then
                             for i = 0, GetPokerPlayersCount() do
                                 SetPokerCards(i, 50, 51, 52)
@@ -1575,6 +1648,8 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Forces the dealer's hand to lose. Also, reveals your and the dealer's cards.",
                     func = function()
+                        ForceScriptHost()
+                        Script.Yield(1000)
                         if eLocal.World.Casino.Poker.CurrentTable:Get() ~= -1 then
                             local id = GetPokerPlayersCount() + 1
                             SetPokerCards(id, 2, 17, 32)
@@ -1639,7 +1714,7 @@ eFeature = {
                     desc = "Applies the price per selected crate.",
                     func = function(cargo, price)
                         if not IsInSessionAlone() then
-                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                            EmptySession()
                         end
                         local price   = eTunable.Business.Hangar.Price
                         local cargoes = { price.Animals, price.Arts, price.Chemicals, price.Counterfeit, price.Jewelry, price.Medicals, price.Narcotics, price.Tobacco }
@@ -1684,7 +1759,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Hangar_Open"),
                     name = "Open Laptop",
                     type = eFeatureType.Button,
-                    desc = "Opens the hangar's laptop screen.",
+                    desc = "Opens the Hangar's laptop screen.",
                     func = function()
                         StartScript(eScript.Business.Hangar.name, eScript.Business.Hangar.stack)
                     end
@@ -1693,7 +1768,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Hangar_Supply"),
                     name = "Get Cargo",
                     type = eFeatureType.Button,
-                    desc = "Gets cargo for your hangar.",
+                    desc = "Gets cargo for your Hangar.",
                     func = function()
                         ePackedBool.Business.Hangar.Cargo:Set(true)
                     end
@@ -1702,7 +1777,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Hangar_Supplier"),
                     name = "Turkish Supplier",
                     type = eFeatureType.Toggle,
-                    desc = "Fills your hangar stock repeatedly.",
+                    desc = "Fills your Hangar stock repeatedly.",
                     func = function()
                         ePackedBool.Business.Hangar.Cargo:Set(true)
                     end
@@ -1787,7 +1862,7 @@ eFeature = {
                     desc = "Applies the maximum price for cargoes.",
                     func = function()
                         if not IsInSessionAlone() then
-                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                            EmptySession()
                         end
                         eTunable.Business.Nightclub.Price.Weapons:Set(math.floor(4000000 / eStat.MPX_HUB_PROD_TOTAL_1:Get()))
                         eTunable.Business.Nightclub.Price.Coke:Set(math.floor(4000000 / eStat.MPX_HUB_PROD_TOTAL_2:Get()))
@@ -1819,7 +1894,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Nightclub_Open"),
                     name = "Open Computer",
                     type = eFeatureType.Button,
-                    desc = "Opens the nightclub's computer screen.",
+                    desc = "Opens the Nightclub's computer screen.",
                     func = function()
                         StartScript(eScript.Business.Nightclub.name, eScript.Business.Nightclub.stack)
                     end
@@ -1848,7 +1923,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Nightclub_Supplier"),
                     name = "(!) Turkish Supplier",
                     type = eFeatureType.Toggle,
-                    desc = "Fills your nightclub stock repeatedly.",
+                    desc = "Fills your Nightclub stock repeatedly.",
                     func = function()
                         
                     end
@@ -1897,7 +1972,7 @@ eFeature = {
             Safe = {
                 Fill = {
                     hash = Utils.Joaat("SN_Nightclub_Fill"),
-                    name = "(!) Fill Safe",
+                    name = "Fill Safe",
                     type = eFeatureType.Button,
                     desc = "Fills your Nightclub safe with money.",
                     func = function()
@@ -1915,7 +1990,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Nightclub_Collect"),
                     name = "Collect Safe",
                     type = eFeatureType.Button,
-                    desc = "Collects money from your safe. Use inside the nightclub.",
+                    desc = "Collects money from your safe. Use inside your Nightclub.",
                     func = function()
                         eLocal.Business.Nightclub.Safe.Collect:Set(1)
                     end
@@ -1926,7 +2001,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Nightclub_Max"),
                     name = "Max Popularity",
                     type = eFeatureType.Button,
-                    desc = "Makes your nightclub popular.",
+                    desc = "Makes your Nightclub popular.",
                     func = function()
                         eStat.MPX_CLUB_POPULARITY:Set(1000)
                     end
@@ -1935,7 +2010,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Nightclub_Min"),
                     name = "Min Populatiry",
                     type = eFeatureType.Button,
-                    desc = "Makes your nightclub unpopular.",
+                    desc = "Makes your Nightclub unpopular.",
                     func = function()
                         eStat.MPX_CLUB_POPULARITY:Set(0)
                     end
@@ -1954,10 +2029,10 @@ eFeature = {
                     hash = Utils.Joaat("SN_CrateWarehouse_PriceApply"),
                     name = "Apply Price",
                     type = eFeatureType.Button,
-                    desc = "Applies the price for your crates.",
+                    desc = "UNSAFE. Applies the price for your crates.",
                     func = function(price)
                         if not IsInSessionAlone() then
-                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                            EmptySession()
                         end
                         eTunable.Business.CrateWarehouse.Price.Threshold1:Set(price)
                         eTunable.Business.CrateWarehouse.Price.Threshold2:Set(math.floor(price / 2))
@@ -2009,7 +2084,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_CrateWarehouse_Sell"),
                     name = "Instant Sell",
                     type = eFeatureType.Button,
-                    desc = "Finishes the sell mission instantly. Use after the mission has started.",
+                    desc = "UNSAFE. Finishes the sell mission instantly. Use after the mission has started.",
                     func = function(bool1, bool2)
                         if not bool2 then
                             if IsScriptRunning(eScript.Business.CrateWarehouse.Sell.name) then
@@ -2059,7 +2134,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_CrateWarehouse_Supply"),
                     name = "Get Crates",
                     type = eFeatureType.Button,
-                    desc = "Gets crates for your bunker.",
+                    desc = "Gets crates for your Bunker.",
                     func = function()
                         ePackedBool.Business.CrateWarehouse.Cargo:Set(true)
                     end
@@ -2068,7 +2143,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_CrateWarehouse_Supplier"),
                     name = "Turkish Supplier",
                     type = eFeatureType.Toggle,
-                    desc = "Fills your crate warehouse stock repeatedly.",
+                    desc = "Fills your Crate Warehouse stock repeatedly.",
                     func = function()
                         ePackedBool.Business.CrateWarehouse.Cargo:Set(true)
                     end
@@ -2169,7 +2244,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_EasyMoney_40m"),
                     name = "Give 40mil",
                     type = eFeatureType.Button,
-                    desc = "Gives 40mil dollars in a few seconds. Has a cooldown of about 1 hour.",
+                    desc = "UNTESTED. Gives 40mil dollars in a few seconds. Has a cooldown of about 1 hour.",
                     func = function()
                         TriggerTransaction(0x176D9D54)
                         Script.Yield(3000)
@@ -2197,7 +2272,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_EasyMoney_50k"),
                     name = "50k Loop",
                     type = eFeatureType.Toggle,
-                    desc = "Toggles the 50k dollars loop.",
+                    desc = "UNTESTED. Toggles the 50k dollars loop.",
                     func = function()
                         TriggerTransaction(0x610F9AB4)
                     end
@@ -2206,7 +2281,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_EasyMoney_180k"),
                     name = "180k Loop",
                     type = eFeatureType.Toggle,
-                    desc = "Toggles the 180k dollars loop.",
+                    desc = "UNTESTED. Toggles the 180k dollars loop.",
                     func = function()
                         TriggerTransaction(0x615762F1)
                     end
@@ -2267,7 +2342,7 @@ eFeature = {
                     end
                 },
                 Remove = {
-                    hash = Utils.Joaat("SN_Misc_EditorRemove"),
+                    hash = Utils.Joaat("SN_Misc_Remove"),
                     name = "Remove",
                     type = eFeatureType.Button,
                     desc = "Removes the selected money amount from your character.",
@@ -2275,6 +2350,24 @@ eFeature = {
                         local charSlot = eStat.MPPLY_LAST_MP_CHAR:Get()
                         local amount   = (amount > eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE() + eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE()) and eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE() + eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE() or amount
                         eGlobal.Player.Cash.Remove:Set(amount)
+                    end
+                },
+                DepositAll = {
+                    hash = Utils.Joaat("SN_Misc_EditDepositAll"),
+                    name = "Deposit All",
+                    type = eFeatureType.Button,
+                    desc = "Deposits all money to your bank.",
+                    func = function()
+                        eNative.NETSHOPPING.NET_GAMESERVER_TRANSFER_WALLET_TO_BANK(charSlot, eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE())
+                    end
+                },
+                WithdrawAll = {
+                    hash = Utils.Joaat("SN_Misc_EditWithdrawAll"),
+                    name = "Withdraw All",
+                    type = eFeatureType.Button,
+                    desc = "Withdraws all money from your bank.",
+                    func = function(amount)
+                        eNative.NETSHOPPING.NET_GAMESERVER_TRANSFER_BANK_TO_WALLET(charSlot, eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE())
                     end
                 }
             },
