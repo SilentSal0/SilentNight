@@ -24,7 +24,7 @@ end)
 FeatureMgr.AddFeature(hangarDelivered.hash, hangarDelivered.name, hangarDelivered.type, hangarDelivered.desc, function(f)
 end)
     :SetDefaultValue(0)
-    :SetLimitValues(0, 15)
+    :SetLimitValues(0, 16)
     :SetStepSize(1)
     :Reset()
 

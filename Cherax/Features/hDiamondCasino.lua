@@ -98,10 +98,6 @@ FeatureMgr.AddFeature(diamondReload.hash, diamondReload.name, diamondReload.type
     diamondReload.func()
 end)
 
-FeatureMgr.AddFeature(diamondCooldown.hash, diamondCooldown.name, diamondCooldown.type, diamondCooldown.desc, function(f)
-    diamondCooldown.func()
-end)
-
 FeatureMgr.AddFeature(diamondForce.hash, diamondForce.name, diamondForce.type, diamondForce.desc, function(f)
     diamondForce.func()
 end)
@@ -120,6 +116,10 @@ end)
 
 FeatureMgr.AddFeature(diamondAutograbber.hash, diamondAutograbber.name, diamondAutograbber.type, diamondAutograbber.desc, function(f)
     diamondAutograbber.func(f:IsToggled())
+end)
+
+FeatureMgr.AddFeature(diamondCooldown.hash, diamondCooldown.name, diamondCooldown.type, diamondCooldown.desc, function(f)
+    diamondCooldown.func()
 end)
 
 FeatureMgr.AddFeature(diamondUnlock.hash, diamondUnlock.name, diamondUnlock.type, diamondUnlock.desc, function(f)

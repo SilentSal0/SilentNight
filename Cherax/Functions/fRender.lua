@@ -435,11 +435,11 @@ function RenderMoneyTool()
                     ImGui.TableNextColumn()
                     if ClickGUI.BeginCustomChildWindow("Misc") then
                         ClickGUI.RenderFeature(specialOpen.hash)
-                        ClickGUI.RenderFeature(specialCooldown.hash)
                         ClickGUI.RenderFeature(specialSupply.hash)
                         ClickGUI.RenderFeature(specialSupplier.hash)
                         ClickGUI.RenderFeature(specialSelect.hash)
                         ClickGUI.RenderFeature(specialBuy.hash)
+                        ClickGUI.RenderFeature(specialCooldown.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
                     ImGui.TableNextColumn()

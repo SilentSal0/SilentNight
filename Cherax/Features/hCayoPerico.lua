@@ -63,14 +63,6 @@ FeatureMgr.AddFeature(cayoReload.hash, cayoReload.name, cayoReload.type, cayoRel
     cayoReload.func()
 end)
 
-FeatureMgr.AddFeature(cayoSoloCooldown.hash, cayoSoloCooldown.name, cayoSoloCooldown.type, cayoSoloCooldown.desc, function(f)
-    cayoSoloCooldown.func()
-end)
-
-FeatureMgr.AddFeature(cayoTeamCooldown.hash, cayoTeamCooldown.name, cayoTeamCooldown.type, cayoTeamCooldown.desc, function(f)
-    cayoTeamCooldown.func()
-end)
-
 FeatureMgr.AddFeature(cayoForce.hash, cayoForce.name, cayoForce.type, cayoForce.desc, function(f)
     cayoForce.func()
 end)
@@ -93,6 +85,14 @@ end)
 
 FeatureMgr.AddFeature(cayoBag.hash, cayoBag.name, cayoBag.type, cayoBag.desc, function(f)
     cayoBag.func()
+end)
+
+FeatureMgr.AddFeature(cayoSoloCooldown.hash, cayoSoloCooldown.name, cayoSoloCooldown.type, cayoSoloCooldown.desc, function(f)
+    cayoSoloCooldown.func()
+end)
+
+FeatureMgr.AddFeature(cayoTeamCooldown.hash, cayoTeamCooldown.name, cayoTeamCooldown.type, cayoTeamCooldown.desc, function(f)
+    cayoTeamCooldown.func()
 end)
 
 FeatureMgr.AddFeature(cayoUnlock.hash, cayoUnlock.name, cayoUnlock.type, cayoUnlock.desc, function(f)

@@ -11,12 +11,12 @@ FeatureMgr.AddFeature(autoReload.hash, autoReload.name, autoReload.type, autoRel
     autoReload.func()
 end)
 
-FeatureMgr.AddFeature(autoCooldown.hash, autoCooldown.name, autoCooldown.type, autoCooldown.desc, function(f)
-    autoCooldown.func()
-end)
-
 FeatureMgr.AddFeature(autoFinish.hash, autoFinish.name, autoFinish.type, autoFinish.desc, function(f)
     autoFinish.func()
+end)
+
+FeatureMgr.AddFeature(autoCooldown.hash, autoCooldown.name, autoCooldown.type, autoCooldown.desc, function(f)
+    autoCooldown.func()
 end)
 
 FeatureMgr.AddFeature(autoSelect.hash, autoSelect.name, autoSelect.type, autoSelect.desc, function(f)

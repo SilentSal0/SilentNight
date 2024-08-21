@@ -34,10 +34,6 @@ FeatureMgr.AddFeature(specialOpen.hash, specialOpen.name, specialOpen.type, spec
 end)
     :SetVisible(false)
 
-FeatureMgr.AddFeature(specialCooldown.hash, specialCooldown.name, specialCooldown.type, specialCooldown.desc, function(f)
-    specialCooldown.func()
-end)
-
 FeatureMgr.AddFeature(specialSupply.hash, specialSupply.name, specialSupply.type, specialSupply.desc, function(f)
     specialSupply.func()
 end)
@@ -55,6 +51,10 @@ end)
 FeatureMgr.AddFeature(specialBuy.hash, specialBuy.name, specialBuy.type, specialBuy.desc, function(f)
     local amount = FeatureMgr.GetFeature(specialSelect.hash):GetIntValue()
     specialBuy.func(amount)
+end)
+
+FeatureMgr.AddFeature(specialCooldown.hash, specialCooldown.name, specialCooldown.type, specialCooldown.desc, function(f)
+    specialCooldown.func()
 end)
 
 FeatureMgr.AddFeature(specialBuyMade.hash, specialBuyMade.name, specialBuyMade.type, specialBuyMade.desc, function(f)
