@@ -58,10 +58,9 @@ for i = 1, 4 do
 end
 
 FeatureMgr.AddFeature(doomsdayApply.hash, doomsdayApply.name, doomsdayApply.type, doomsdayApply.desc, function(f)
-    local team = doomsdayTeam.list[FeatureMgr.GetFeatureListIndex(doomsdayTeam.hash) + 1].index
     local cuts = {}
     for i = 1, 4 do
         table.insert(cuts, FeatureMgr.GetFeature(doomsdayPlayers[i].hash):GetIntValue())
     end
-    doomsdayApply.func(team, table.unpack(cuts))
+    doomsdayApply.func(cuts)
 end)

@@ -70,5 +70,5 @@ FeatureMgr.AddFeature(apartmentApply.hash, apartmentApply.name, apartmentApply.t
     for i = 1, 4 do
         table.insert(cuts, FeatureMgr.GetFeature(apartmentPlayers[i].hash):GetIntValue())
     end
-    apartmentApply.func(team, receivers, table.unpack(cuts))
+    apartmentApply.func(team, receivers, cuts)
 end)

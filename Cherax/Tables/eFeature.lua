@@ -316,13 +316,13 @@ eFeature = {
                     name = "Apply Cuts",
                     type = eFeatureType.Button,
                     desc = "Applies the selected cuts for players.",
-                    func = function(team, receivers, cut1, cut2, cut3, cut4)
+                    func = function(team, receivers, cuts)
                         GUI.Toggle()
                         local function SetCuts()
-                            eGlobal.Heist.Apartment.Cut.Player1.Global:Set(100 - (cut1 * team))
-                            eGlobal.Heist.Apartment.Cut.Player2.Global:Set(cut2)
-                            eGlobal.Heist.Apartment.Cut.Player3.Global:Set(cut3)
-                            eGlobal.Heist.Apartment.Cut.Player4.Global:Set(cut4)
+                            eGlobal.Heist.Apartment.Cut.Player1.Global:Set(100 - (cuts[1] * team))
+                            eGlobal.Heist.Apartment.Cut.Player2.Global:Set(cuts[2])
+                            eGlobal.Heist.Apartment.Cut.Player3.Global:Set(cuts[3])
+                            eGlobal.Heist.Apartment.Cut.Player4.Global:Set(cuts[4])
                             eNative.PAD.SET_CURSOR_POSITION(0.775, 0.175)
                             SimulatePlayerControl(237)
                             SimulateFrontendControl(202)
@@ -330,11 +330,11 @@ eFeature = {
                         end
                         if receivers == 0 and team ~= 1 then
                             SetCuts()
-                            eGlobal.Heist.Apartment.Cut.Player1.Local:Set(cut1)
+                            eGlobal.Heist.Apartment.Cut.Player1.Local:Set(cuts[1])
                         elseif receivers == 1 and team ~= 1 then
                             SetCuts()
                         elseif receivers == 2 or team == 1 then
-                            eGlobal.Heist.Apartment.Cut.Player1.Local:Set(cut1)
+                            eGlobal.Heist.Apartment.Cut.Player1.Local:Set(cuts[1])
                         end
                         GUI.Toggle()
                     end
@@ -594,11 +594,10 @@ eFeature = {
                     name = "Apply Cuts",
                     type = eFeatureType.Button,
                     desc = "Applies the selected cuts for players.",
-                    func = function(cut1, cut2, cut3, cut4)
-                        eGlobal.Heist.CayoPerico.Cut.Player1:Set(cut1)
-                        eGlobal.Heist.CayoPerico.Cut.Player2:Set(cut2)
-                        eGlobal.Heist.CayoPerico.Cut.Player3:Set(cut3)
-                        eGlobal.Heist.CayoPerico.Cut.Player4:Set(cut4)
+                    func = function(cuts)
+                        for i = 1, 4 do
+                            eGlobal.Heist.CayoPerico.Cut["Player" .. i]:Set(cuts[i])
+                        end
                     end
                 }
             }
@@ -826,11 +825,10 @@ eFeature = {
                     name = "Apply Cuts",
                     type = eFeatureType.Button,
                     desc = "Applies the selected cuts for players.",
-                    func = function(cut1, cut2, cut3, cut4)
-                        eGlobal.Heist.DiamondCasino.Cut.Player1:Set(cut1)
-                        eGlobal.Heist.DiamondCasino.Cut.Player2:Set(cut2)
-                        eGlobal.Heist.DiamondCasino.Cut.Player3:Set(cut3)
-                        eGlobal.Heist.DiamondCasino.Cut.Player4:Set(cut4)
+                    func = function(cuts)
+                        for i = 1, 4 do
+                            eGlobal.Heist.DiamondCasino.Cut["Player" .. i]:Set(cuts[i])
+                        end
                     end
                 }
             }
@@ -960,11 +958,10 @@ eFeature = {
                     name = "Apply Cuts",
                     type = eFeatureType.Button,
                     desc = "Applies the selected cuts for players.",
-                    func = function(cut1, cut2, cut3, cut4)
-                        eGlobal.Heist.Doomsday.Cut.Player1:Set(cut1)
-                        eGlobal.Heist.Doomsday.Cut.Player2:Set(cut2)
-                        eGlobal.Heist.Doomsday.Cut.Player3:Set(cut3)
-                        eGlobal.Heist.Doomsday.Cut.Player4:Set(cut4)
+                    func = function(cuts)
+                        for i = 1, 4 do
+                            eGlobal.Heist.Doomsday.Cut["Player" .. i]:Set(cuts[i])
+                        end
                     end
                 }
             }

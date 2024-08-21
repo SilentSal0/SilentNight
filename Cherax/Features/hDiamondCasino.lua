@@ -152,10 +152,9 @@ for i = 1, 4 do
 end
 
 FeatureMgr.AddFeature(diamondApply.hash, diamondApply.name, diamondApply.type, diamondApply.desc, function(f)
-    local team = diamondTeam.list[FeatureMgr.GetFeatureListIndex(diamondTeam.hash) + 1].index
     local cuts = {}
     for i = 1, 4 do
         table.insert(cuts, FeatureMgr.GetFeature(diamondPlayers[i].hash):GetIntValue())
     end
-    diamondApply.func(team, table.unpack(cuts))
+    diamondApply.func(cuts)
 end)

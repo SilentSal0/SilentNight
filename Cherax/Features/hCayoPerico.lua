@@ -125,10 +125,9 @@ for i = 1, 4 do
 end
 
 FeatureMgr.AddFeature(cayoApply.hash, cayoApply.name, cayoApply.type, cayoApply.desc, function(f)
-    local team = cayoTeam.list[FeatureMgr.GetFeatureListIndex(cayoTeam.hash) + 1].index
     local cuts = {}
     for i = 1, 4 do
         table.insert(cuts, FeatureMgr.GetFeature(cayoPlayers[i].hash):GetIntValue())
     end
-    cayoApply.func(team, table.unpack(cuts))
+    cayoApply.func(cuts)
 end)
