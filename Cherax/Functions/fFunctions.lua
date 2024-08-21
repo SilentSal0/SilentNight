@@ -22,6 +22,10 @@ function IsInSession()
     return eNative.NETWORK_IS_SESSION_STARTED()
 end
 
+function IsInSessionAlone()
+    return eNative.PLAYER.GET_NUMBER_OF_PLAYERS() == 1
+end
+
 function IsScriptRunning(scriptName)
     return eNative.SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(Utils.Joaat(scriptName)) > 0
 end

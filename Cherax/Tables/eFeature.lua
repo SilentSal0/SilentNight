@@ -1271,9 +1271,14 @@ eFeature = {
                     hash = Utils.Joaat("SN_Bunker_Price"),
                     name = "Maximize Price",
                     type = eFeatureType.Button,
-                    desc = "Applies the maximum price for your stock.",
-                    func = function(price)
-                        eTunable.Business.Bunker.Price:Set(math.floor(2300000 / eStat.MPX_PRODTOTALFORFACTORY5:Get()))
+                    desc = "Applies the maximum price for your stock. Sell to Blaine County only.",
+                    func = function()
+                        if not IsInSessionAlone() then
+                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                        end
+                        eTunable.Business.Bunker.Product.Value:Set(math.floor(2500000 / eStat.MPX_PRODTOTALFORFACTORY5:Get()))
+                        eTunable.Business.Bunker.Product.StaffUpgraded:Set(0)
+                        eTunable.Business.Bunker.Product.EquipmentUpgraded:Set(0)
                         eTunable.Business.Bunker.Multiplier.ProductLocal:Set(1.0)
                         eTunable.Business.Bunker.Multiplier.ProductFar:Set(1.0)
                     end
@@ -1636,6 +1641,9 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Applies the price per selected crate.",
                     func = function(cargo, price)
+                        if not IsInSessionAlone() then
+                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                        end
                         local price   = eTunable.Business.Hangar.Price
                         local cargoes = { price.Animals, price.Arts, price.Chemicals, price.Counterfeit, price.Jewelry, price.Medicals, price.Narcotics, price.Tobacco }
                         cargoes[cargo]:Set(price)
@@ -1781,6 +1789,9 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Applies the maximum price for cargoes.",
                     func = function()
+                        if not IsInSessionAlone() then
+                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                        end
                         eTunable.Business.Nightclub.Price.Weapons:Set(math.floor(4000000 / eStat.MPX_HUB_PROD_TOTAL_1:Get()))
                         eTunable.Business.Nightclub.Price.Coke:Set(math.floor(4000000 / eStat.MPX_HUB_PROD_TOTAL_2:Get()))
                         eTunable.Business.Nightclub.Price.Meth:Set(math.floor(4000000 / eStat.MPX_HUB_PROD_TOTAL_3:Get()))
@@ -1948,6 +1959,9 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Applies the price for your crates.",
                     func = function(price)
+                        if not IsInSessionAlone() then
+                            FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+                        end
                         eTunable.Business.CrateWarehouse.Price.Threshold1:Set(price)
                         eTunable.Business.CrateWarehouse.Price.Threshold2:Set(math.floor(price / 2))
                         eTunable.Business.CrateWarehouse.Price.Threshold3:Set(math.floor(price / 3))

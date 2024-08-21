@@ -2,7 +2,11 @@ eTunable = {
     HAS_PARSED = false,
     Business = {
         Bunker = {
-            Price = { type = "int", tunable = "GR_MANU_PRODUCT_VALUE", defaultValue = 5000 },
+            Product = { 
+                Value             = { type = "int", tunable = "GR_MANU_PRODUCT_VALUE",                   defaultValue = 5000 },
+                StaffUpgraded     = { type = "int", tunable = "GR_MANU_PRODUCT_VALUE_STAFF_UPGRADE",     defaultValue = 1000 },
+                EquipmentUpgraded = { type = "int", tunable = "GR_MANU_PRODUCT_VALUE_EQUIPMENT_UPGRADE", defaultValue = 1000 }
+            },
             Research = {
                 Capacity       = { type = "int", tunable = "GR_RESEARCH_CAPACITY",        defaultValue = 60     },
                 ProductionTime = { type = "int", tunable = "GR_RESEARCH_PRODUCTION_TIME", defaultValue = 300000 },

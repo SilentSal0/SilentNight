@@ -33,6 +33,9 @@ eNative = {
         SET_CONTROL_VALUE_NEXT_FRAME = InvokeNative("Bool", 0xE8A25867FBA3B05E),
         SET_CURSOR_POSITION          = InvokeNative("Bool", 0xFC695459D4D0E219)
     },
+    PLAYER = {
+        GET_NUMBER_OF_PLAYERS = InvokeNative("Int", 0x407C7F91DDB46C16)
+    },
     SCRIPT = {
         REQUEST_SCRIPT                                          = InvokeNative(0x6EB5F71AA68F2E8E),
         SET_SCRIPT_AS_NO_LONGER_NEEDED                          = InvokeNative(0xC90D2DCACD56184C),
