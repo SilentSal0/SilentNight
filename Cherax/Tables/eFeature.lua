@@ -702,6 +702,9 @@ eFeature = {
                         eStat.MPX_H3OPT_CREWHACKER:Set(hacker)
                         eStat.MPX_H3OPT_MASKS:Set(masks)
                         eStat.MPX_H3OPT_TARGET:Set(target)
+                        eStat.MPX_H3OPT_BITSET0:Set(-1)
+                        eStat.MPX_H3OPT_BITSET1:Set(-1)
+                        eStat.MPX_H3OPT_COMPLETEDPOSIX:Set(-1)
                         eLocal.Heist.DiamondCasino.Reload:Set(2)
                     end
                 },

@@ -199,7 +199,6 @@ function ParsePackedBools(tbl)
         if type(v) == "table" and v[1] then
             v.Set = function(self, value)
                 local success, statValue = Stats.GetInt(Utils.sJoaat("MPPLY_LAST_MP_CHAR"))
-
                 if v[2] then
                     for i = v[1], v[2] do
                         eNative.STATS.SET_PACKED_STAT_BOOL_CODE(i, value, statValue)

@@ -32,6 +32,7 @@ end)
 FeatureMgr.AddFeature(specialOpen.hash, specialOpen.name, specialOpen.type, specialOpen.desc, function(f)
     specialOpen.func()
 end)
+    :SetVisible(false)
 
 FeatureMgr.AddFeature(specialCooldown.hash, specialCooldown.name, specialCooldown.type, specialCooldown.desc, function(f)
     specialCooldown.func()

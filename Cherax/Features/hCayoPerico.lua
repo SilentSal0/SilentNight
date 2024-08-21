@@ -41,7 +41,7 @@ end)
 
 FeatureMgr.AddFeature(cayoIslandAmount.hash, cayoIslandAmount.name, cayoIslandAmount.type, cayoIslandAmount.desc, function(f) 
     if f:GetListIndex() == 0 then
-        FeatureMgr.GetFeature(cayoCompoundTarget.hash):SetListIndex(0)
+        FeatureMgr.GetFeature(cayoIslandTarget.hash):SetListIndex(0)
     end
 end)
     :SetList(cayoIslandAmount.list:GetNames())         
@@ -52,7 +52,7 @@ FeatureMgr.AddFeature(cayoComplete.hash, cayoComplete.name, cayoComplete.type, c
     local loadout        = cayoLoadout.list[FeatureMgr.GetFeatureListIndex(cayoLoadout.hash) + 1].index
     local primaryTarget  = cayoPrimaryTarget.list[FeatureMgr.GetFeatureListIndex(cayoPrimaryTarget.hash) + 1].index
     local compoundTarget = cayoCompoundTarget.list[FeatureMgr.GetFeatureListIndex(cayoCompoundTarget.hash) + 1].index
-    local compoundAmount = cayoCompoundAmount.list[FeatureMgr.GetFeatureListIndex(cayoCompoundAmount.hash) + 1]
+    local compoundAmount = cayoCompoundAmount.list[FeatureMgr.GetFeatureListIndex(cayoCompoundAmount.hash) + 1].index
     local artsAmount     = cayoArtsAmount.list[FeatureMgr.GetFeatureListIndex(cayoArtsAmount.hash) + 1].index
     local islandTarget   = cayoIslandTarget.list[FeatureMgr.GetFeatureListIndex(cayoIslandTarget.hash) + 1].index
     local islandAmount   = cayoIslandAmount.list[FeatureMgr.GetFeatureListIndex(cayoIslandAmount.hash) + 1].index

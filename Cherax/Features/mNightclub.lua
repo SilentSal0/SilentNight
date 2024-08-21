@@ -17,9 +17,11 @@ end)
 FeatureMgr.AddFeature(nightclubTrigger.hash, nightclubTrigger.name, nightclubTrigger.type, nightclubTrigger.desc, function(f)
     nightclubTrigger.func()
 end)
+    :SetVisible(false)
 
 FeatureMgr.AddFeature(nightclubSupplier.hash, nightclubSupplier.name, nightclubSupplier.type, nightclubSupplier.desc, function(f)
 end)
+    :SetVisible(false)
 
 FeatureMgr.AddFeature(nightclubSellMade.hash, nightclubSellMade.name, nightclubSellMade.type, nightclubSellMade.desc, function(f)
 end)

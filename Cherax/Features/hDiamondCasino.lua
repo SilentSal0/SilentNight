@@ -57,7 +57,7 @@ FeatureMgr.AddFeature(diamondDriver.hash, diamondDriver.name, diamondDriver.type
     local vehicleRanges = {
         [1] = { 1, 4   },
         [4] = { 5, 8   },
-        [2] = { 9, 12 },
+        [2] = { 9, 12  },
         [3] = { 13, 16 },
         [5] = { 17, 20 },
     }
