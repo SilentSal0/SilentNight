@@ -635,6 +635,7 @@ eStat = {
     MPX_H3OPT_BITSET0               = { type = "int",   stat = "H3OPT_BITSET0"                  },
     MPX_H3OPT_BITSET1               = { type = "int",   stat = "H3OPT_BITSET1"                  },
     MPX_H3OPT_COMPLETEDPOSIX        = { type = "int",   stat = "H3OPT_COMPLETEDPOSIX"           },
+    MPX_HANGAR_CONTRABAND_TOTAL     = { type = "int",   stat = "HANGAR_CONTRABAND_TOTAL"        },
     MPX_SALV23_GEN_BS               = { type = "int",   stat = "SALV23_GEN_BS"                  },
     MPX_SALV23_SCOPE_BS             = { type = "int",   stat = "SALV23_SCOPE_BS"                },
     MPX_SALV23_FM_PROG              = { type = "int",   stat = "SALV23_FM_PROG"                 },

@@ -1570,12 +1570,12 @@ end
 
 local function toggle_night_loop_afk()
 	if localplayer ~= nil then
-		local safe_value = 1845281 + 1 + (get_localplayer_id() * 883) + 268 + 358 + 5
 		for i = NLISg, NLIEg do
 			globals.set_int(i, 300000)
 		end
+		globals.set_int(NLSCg, 300000)
 		while states.b30 do
-			globals.set_int(NLSCg, 300000)
+			local safe_value = 1845281 + 1 + (get_localplayer_id() * 883) + 268 + 358 + 5
 			stats.set_int(MPX() .. "CLUB_PAY_TIME_LEFT", -1)
 			sleep(night_loop_delay)
 			if globals.get_int(safe_value) ~= 0 then
@@ -3040,7 +3040,7 @@ function create_apartment_submenu()
 		globals.set_int(ACFg1, 1)
 		globals.set_int(ACFg2, 4)
 		globals.set_int(ACFg2, 3)
-		sleep(0.5)
+		sleep(1)
 		globals.set_int(ACg5, (apartment_player1 == "On") and apartment_cut or 0)
 	end)
 
@@ -6488,7 +6488,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.4 Beta")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.0")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")

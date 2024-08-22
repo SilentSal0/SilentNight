@@ -112,6 +112,8 @@ function RenderHeistTool()
                         ClickGUI.RenderFeature(cayoBag.hash)
                         ClickGUI.RenderFeature(cayoSoloCooldown.hash)
                         ClickGUI.RenderFeature(cayoTeamCooldown.hash)
+                        ClickGUI.RenderFeature(cayoOffline.hash)
+                        ClickGUI.RenderFeature(cayoOnline.hash)
                         ClickGUI.RenderFeature(cayoUnlock.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
@@ -124,6 +126,11 @@ function RenderHeistTool()
                         ClickGUI.RenderFeature(cayoPlayer3.hash)
                         ClickGUI.RenderFeature(cayoPlayer4.hash)
                         ClickGUI.RenderFeature(cayoApply.hash)
+                        ClickGUI.EndCustomChildWindow()
+                    end
+                    if ClickGUI.BeginCustomChildWindow("Non-Host") then
+                        ClickGUI.RenderFeature(genericCut.hash)
+                        ClickGUI.RenderFeature(genericApply.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
                     ImGui.EndColumns()
@@ -170,6 +177,11 @@ function RenderHeistTool()
                         ClickGUI.RenderFeature(diamondApply.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
+                    if ClickGUI.BeginCustomChildWindow("Non-Host") then
+                        ClickGUI.RenderFeature(genericCut.hash)
+                        ClickGUI.RenderFeature(genericApply.hash)
+                        ClickGUI.EndCustomChildWindow()
+                    end
                     ImGui.EndColumns()
                 end
                 ImGui.EndTabItem()
@@ -202,6 +214,11 @@ function RenderHeistTool()
                         ClickGUI.RenderFeature(doomsdayPlayer3.hash)
                         ClickGUI.RenderFeature(doomsdayPlayer4.hash)
                         ClickGUI.RenderFeature(doomsdayApply.hash)
+                        ClickGUI.EndCustomChildWindow()
+                    end
+                    if ClickGUI.BeginCustomChildWindow("Non-Host") then
+                        ClickGUI.RenderFeature(genericCut.hash)
+                        ClickGUI.RenderFeature(genericApply.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
                     ImGui.EndColumns()
@@ -278,7 +295,7 @@ function RenderMoneyTool()
                 if ImGui.BeginColumns(3) then
                     if ClickGUI.BeginCustomChildWindow("Sale") then
                         ClickGUI.RenderFeature(bunkerPrice.hash)
-                        ClickGUI.RenderFeature(bunkerReset.hash)
+                        ClickGUI.RenderFeature(bunkerNoXp.hash)
                         ClickGUI.RenderFeature(bunkerSell.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
@@ -328,7 +345,6 @@ function RenderMoneyTool()
                         ClickGUI.RenderFeature(casinoPokerCards.hash)
                         ClickGUI.RenderFeature(casinoPokerReveal.hash)
                         ClickGUI.RenderFeature(casinoPokerGive.hash)
-                        ClickGUI.RenderFeature(casinoPokerGiveAll.hash)
                         ClickGUI.RenderFeature(casinoPokerTrick.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
@@ -351,10 +367,8 @@ function RenderMoneyTool()
             if ImGui.BeginTabItem("Hangar") then
                 if ImGui.BeginColumns(3) then
                     if ClickGUI.BeginCustomChildWindow("Sale") then
-                        ClickGUI.RenderFeature(hangarCargo.hash)
-                        ClickGUI.RenderFeature(hangarSelect.hash)
-                        ClickGUI.RenderFeature(hangarPApply.hash)
-                        ClickGUI.RenderFeature(hangarReset.hash)
+                        ClickGUI.RenderFeature(hangarPrice.hash)
+                        ClickGUI.RenderFeature(hangarNoXp.hash)
                         ClickGUI.RenderFeature(hangarDelivered.hash)
                         ClickGUI.RenderFeature(hangarSell.hash)
                         ClickGUI.EndCustomChildWindow()
@@ -364,6 +378,7 @@ function RenderMoneyTool()
                         ClickGUI.RenderFeature(hangarOpen.hash)
                         ClickGUI.RenderFeature(hangarSupply.hash)
                         ClickGUI.RenderFeature(hangarSupplier.hash)
+                        ClickGUI.RenderFeature(hangarCooldown.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
                     ImGui.TableNextColumn()
@@ -387,7 +402,6 @@ function RenderMoneyTool()
                 if ImGui.BeginColumns(3) then
                     if ClickGUI.BeginCustomChildWindow("Sale") then
                         ClickGUI.RenderFeature(nightclubPrice.hash)
-                        ClickGUI.RenderFeature(nightclubReset.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
                     if ClickGUI.BeginCustomChildWindow("Safe") then
@@ -424,9 +438,7 @@ function RenderMoneyTool()
             if ImGui.BeginTabItem("Special Cargo") then
                 if ImGui.BeginColumns(3) then
                     if ClickGUI.BeginCustomChildWindow("Sale") then
-                        ClickGUI.RenderFeature(specialPSelect.hash)
-                        ClickGUI.RenderFeature(specialPApply.hash)
-                        ClickGUI.RenderFeature(specialReset.hash)
+                        ClickGUI.RenderFeature(specialPrice.hash)
                         ClickGUI.RenderFeature(specialNoXp.hash)
                         ClickGUI.RenderFeature(specialNoCrateback.hash)
                         ClickGUI.RenderFeature(specialSell.hash)
@@ -436,9 +448,9 @@ function RenderMoneyTool()
                     if ClickGUI.BeginCustomChildWindow("Misc") then
                         ClickGUI.RenderFeature(specialOpen.hash)
                         ClickGUI.RenderFeature(specialSupply.hash)
-                        ClickGUI.RenderFeature(specialSupplier.hash)
                         ClickGUI.RenderFeature(specialSelect.hash)
                         ClickGUI.RenderFeature(specialBuy.hash)
+                        ClickGUI.RenderFeature(specialSupplier.hash)
                         ClickGUI.RenderFeature(specialCooldown.hash)
                         ClickGUI.EndCustomChildWindow()
                     end
@@ -525,4 +537,4 @@ function RenderSilentNight()
     end
 end
 
-ClickGUI.AddTab("Silent Night v0.0.4", RenderSilentNight)
+ClickGUI.AddTab("Silent Night v0.0.5", RenderSilentNight)

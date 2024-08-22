@@ -1,24 +1,7 @@
-FeatureMgr.AddFeature(hangarCargo.hash, hangarCargo.name, hangarCargo.type, hangarCargo.desc, function(f)
-end)
-    :SetList(hangarCargo.list:GetNames())
-
-FeatureMgr.AddFeature(hangarSelect.hash, hangarSelect.name, hangarSelect.type, hangarSelect.desc, function(f)
-end)
-    :SetDefaultValue(30000)
-    :SetLimitValues(0, 4000000)
-    :SetStepSize(30000)
-    :Reset()
-
-FeatureMgr.AddFeature(hangarPApply.hash, hangarPApply.name, hangarPApply.type, hangarPApply.desc, function(f)
-    local cargo = hangarCargo.list[FeatureMgr.GetFeatureListIndex(hangarCargo.hash) + 1].index
-    local price = FeatureMgr.GetFeature(hangarSelect.hash):GetIntValue()
-    hangarPApply.func(cargo, price)
+FeatureMgr.AddFeature(hangarPrice.hash, hangarPrice.name, hangarPrice.type, hangarPrice.desc, function(f)
 end)
 
-FeatureMgr.AddFeature(hangarReset.hash, hangarReset.name, hangarReset.type, hangarReset.desc, function(f)
-    FeatureMgr.GetFeature(hangarCargo.hash):SetListIndex(0)
-    FeatureMgr.GetFeature(hangarSelect.hash):SetIntValue(30000)
-    hangarReset.func()
+FeatureMgr.AddFeature(hangarNoXp.hash, hangarNoXp.name, hangarNoXp.type, hangarNoXp.desc, function(f)
 end)
 
 FeatureMgr.AddFeature(hangarDelivered.hash, hangarDelivered.name, hangarDelivered.type, hangarDelivered.desc, function(f)
@@ -29,8 +12,10 @@ end)
     :Reset()
 
 FeatureMgr.AddFeature(hangarSell.hash, hangarSell.name, hangarSell.type, hangarSell.desc, function(f)
+    local bool      = FeatureMgr.GetFeature(hangarNoXp.hash):IsToggled()
     local delivered = FeatureMgr.GetFeature(hangarDelivered.hash):GetIntValue()
-    hangarSell.func(delivered)
+    FeatureMgr.GetFeature(hangarDelivered.hash):SetIntValue(0)
+    hangarSell.func(bool, delivered)
 end)
 
 FeatureMgr.AddFeature(hangarOpen.hash, hangarOpen.name, hangarOpen.type, hangarOpen.desc, function(f)
@@ -42,6 +27,10 @@ FeatureMgr.AddFeature(hangarSupply.hash, hangarSupply.name, hangarSupply.type, h
 end)
 
 FeatureMgr.AddFeature(hangarSupplier.hash, hangarSupplier.name, hangarSupplier.type, hangarSupplier.desc, function(f)
+end)
+
+FeatureMgr.AddFeature(hangarCooldown.hash, hangarCooldown.name, hangarCooldown.type, hangarCooldown.desc, function(f)
+    hangarCooldown.func(f:IsToggled())
 end)
 
 FeatureMgr.AddFeature(hangarBuyMade.hash, hangarBuyMade.name, hangarBuyMade.type, hangarBuyMade.desc, function(f)

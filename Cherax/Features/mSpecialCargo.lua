@@ -1,18 +1,4 @@
-FeatureMgr.AddFeature(specialPSelect.hash, specialPSelect.name, specialPSelect.type, specialPSelect.desc, function(f)
-end)
-    :SetDefaultValue(0)
-    :SetLimitValues(0, 6000000)
-    :SetStepSize(1000000)
-    :Reset()
-
-FeatureMgr.AddFeature(specialPApply.hash, specialPApply.name, specialPApply.type, specialPApply.desc, function(f)
-    local price = FeatureMgr.GetFeature(specialPSelect.hash):GetIntValue()
-    specialPApply.func(price)
-end)
-
-FeatureMgr.AddFeature(specialReset.hash, specialReset.name, specialReset.type, specialReset.desc, function(f)
-    FeatureMgr.GetFeature(specialPSelect.hash):SetIntValue(0)
-    specialReset.func()
+FeatureMgr.AddFeature(specialPrice.hash, specialPrice.name, specialPrice.type, specialPrice.desc, function(f)
 end)
 
 FeatureMgr.AddFeature(specialNoXp.hash, specialNoXp.name, specialNoXp.type, specialNoXp.desc, function(f)

@@ -56,18 +56,17 @@ eTunable = {
             HighDemand = { type = "float", tunable = "EXEC_CONTRABAND_HIGH_DEMAND_BONUS_PERCENTAGE", defaultValue = 2.5 }
         },
         Hangar = {
-            Price = { 
-                Mixed       = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_MIXED",                 defaultValue = 30000 },
-                Animals     = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_ANIMAL_MATERIALS",      defaultValue = 30000 },
-                Arts        = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_ART_AND_ANTIQUES",      defaultValue = 30000 },
-                Chemicals   = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_CHEMICALS",             defaultValue = 30000 },
-                Counterfeit = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_COUNTERFEIT_GOODS",     defaultValue = 30000 },
-                Jewelry     = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_JEWELRY_AND_GEMSTONES", defaultValue = 30000 },
-                Medicals    = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_MEDICAL_SUPPLIES",      defaultValue = 30000 },
-                Narcotics   = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_NARCOTICS",             defaultValue = 30000 },
-                Tobacco     = { type = "int", tunable = "SMUG_SELL_PRICE_PER_CRATE_TOBACCO_AND_ALCOHOL",   defaultValue = 30000 }
-            },
-            RonsCut = { type = "float", tunable = "SMUG_SELL_RONS_CUT", defaultValue = 0.025 }
+            Price    = { type = "int",   tunable = "SMUG_SELL_PRICE_PER_CRATE_MIXED", defaultValue = 30000 },
+            RonsCut  = { type = "float", tunable = "SMUG_SELL_RONS_CUT",              defaultValue = 0.025 },
+            Cooldown = {
+                Steal = {
+                    Easy       = { type = "int", tunable = "SMUG_STEAL_EASY_COOLDOWN_TIMER",            defaultValue = 120000 },
+                    Medium     = { type = "int", tunable = "SMUG_STEAL_MED_COOLDOWN_TIMER",             defaultValue = 180000 },
+                    Hard       = { type = "int", tunable = "SMUG_STEAL_HARD_COOLDOWN_TIMER",            defaultValue = 240000 },
+                    Additional = { type = "int", tunable = "SMUG_STEAL_ADDITIONAL_CRATE_COOLDOWN_TIME", defaultValue = 60000  }
+                },
+                Sell = { type = "int", tunable = "SMUG_SELL_SELL_COOLDOWN_TIMER", defaultValue = 180000 }
+            }
         },
         Nightclub = {
             Price = {

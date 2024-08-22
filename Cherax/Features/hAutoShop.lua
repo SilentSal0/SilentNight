@@ -2,9 +2,9 @@ FeatureMgr.AddFeature(autoContract.hash, autoContract.name, autoContract.type, a
 end)
     :SetList(autoContract.list:GetNames())
 
-FeatureMgr.AddFeature(autoApply.hash, autoApply.name, autoApply.type, autoApply.desc, function(f)
-    local mission = autoContract.list[FeatureMgr.GetFeatureListIndex(autoMission.hash) + 1].index
-    autoApply.func(mission)
+FeatureMgr.AddFeature(autoComplete.hash, autoComplete.name, autoComplete.type, autoComplete.desc, function(f)
+    local contract = autoContract.list[FeatureMgr.GetFeatureListIndex(autoContract.hash) + 1].index
+    autoComplete.func(contract)
 end)
 
 FeatureMgr.AddFeature(autoReload.hash, autoReload.name, autoReload.type, autoReload.desc, function(f)
@@ -26,7 +26,7 @@ end)
     :SetStepSize(100000)
     :Reset()
 
-FeatureMgr.AddFeature(autoComplete.hash, autoComplete.name, autoComplete.type, autoComplete.desc, function(f)
+FeatureMgr.AddFeature(autoApply.hash, autoApply.name, autoApply.type, autoApply.desc, function(f)
     local payout = FeatureMgr.GetFeature(autoSelect.hash):GetIntValue()
-    autoComplete.func(payout)
+    autoApply.func(payout)
 end)

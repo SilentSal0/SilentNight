@@ -115,7 +115,6 @@ FeatureMgr.AddFeature(diamondVaultDoorDrill.hash, diamondVaultDoorDrill.name, di
 end)
 
 FeatureMgr.AddFeature(diamondAutograbber.hash, diamondAutograbber.name, diamondAutograbber.type, diamondAutograbber.desc, function(f)
-    diamondAutograbber.func(f:IsToggled())
 end)
 
 FeatureMgr.AddFeature(diamondCooldown.hash, diamondCooldown.name, diamondCooldown.type, diamondCooldown.desc, function(f)
@@ -150,7 +149,7 @@ for i = 1, 4 do
     FeatureMgr.AddFeature(diamondPlayers[i].hash, diamondPlayers[i].name, diamondPlayers[i].type, diamondPlayers[i].desc, function(f)
     end)
         :SetDefaultValue(0)
-        :SetLimitValues(0, 10000)
+        :SetLimitValues(0, 999)
         :SetStepSize(1)
         :Reset()
 end

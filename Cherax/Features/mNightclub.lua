@@ -1,9 +1,4 @@
 FeatureMgr.AddFeature(nightclubPrice.hash, nightclubPrice.name, nightclubPrice.type, nightclubPrice.desc, function(f)
-    nightclubPrice.func()
-end)
-
-FeatureMgr.AddFeature(nightclubReset.hash, nightclubReset.name, nightclubReset.type, nightclubReset.desc, function(f)
-    nightclubReset.func()
 end)
 
 FeatureMgr.AddFeature(nightclubOpen.hash, nightclubOpen.name, nightclubOpen.type, nightclubOpen.desc, function(f)
@@ -20,7 +15,7 @@ end)
     :SetVisible(false)
 
 FeatureMgr.AddFeature(nightclubCooldown.hash, nightclubCooldown.name, nightclubCooldown.type, nightclubCooldown.desc, function(f)
-    nightclubCooldown.func()
+    nightclubCooldown.func(f:IsToggled())
 end)
 
 FeatureMgr.AddFeature(nightclubSellMade.hash, nightclubSellMade.name, nightclubSellMade.type, nightclubSellMade.desc, function(f)

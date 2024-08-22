@@ -95,6 +95,14 @@ FeatureMgr.AddFeature(cayoTeamCooldown.hash, cayoTeamCooldown.name, cayoTeamCool
     cayoTeamCooldown.func()
 end)
 
+FeatureMgr.AddFeature(cayoOffline.hash, cayoOffline.name, cayoOffline.type, cayoOffline.desc, function()
+    cayoOffline.func()
+end)
+
+FeatureMgr.AddFeature(cayoOnline.hash, cayoOnline.name, cayoOnline.type, cayoOnline.desc, function()
+    cayoOnline.func()
+end)
+
 FeatureMgr.AddFeature(cayoUnlock.hash, cayoUnlock.name, cayoUnlock.type, cayoUnlock.desc, function(f)
     cayoUnlock.func()
 end)
@@ -123,7 +131,7 @@ for i = 1, 4 do
     FeatureMgr.AddFeature(cayoPlayers[i].hash, cayoPlayers[i].name, cayoPlayers[i].type, cayoPlayers[i].desc, function(f)
     end)
         :SetDefaultValue(0)
-        :SetLimitValues(0, 10000)
+        :SetLimitValues(0, 999)
         :SetStepSize(1)
         :Reset()
 end

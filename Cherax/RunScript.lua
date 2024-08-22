@@ -47,7 +47,7 @@ local function RunScript()
             end
         end
         if not found then
-            Logger.LogError(string.format("File not found: %s", file))
+            Logger.Log(eLogColor.RED, "Silent Night", estring.format("File not found: %s", file))
         end
     end
 end

@@ -78,14 +78,14 @@ eTable = {
         },
         AutoShop = {
             Contracts = {
-                { name = "Union Deposit.",   index = 0 },
-                { name = "Superdol. Deal",   index = 1 },
-                { name = "Bank Contract",    index = 2 },
-                { name = "ECU Job",          index = 3 },
-                { name = "Prison Contract",  index = 4 },
-                { name = "Agency Deal",      index = 5 },
-                { name = "Lost Contract",    index = 6 },
-                { name = "Data Contract",    index = 7 }
+                { name = "Union Deposit.",  index = 0 },
+                { name = "Superdol. Deal",  index = 1 },
+                { name = "Bank Contract",   index = 2 },
+                { name = "ECU Job",         index = 3 },
+                { name = "Prison Contract", index = 4 },
+                { name = "Agency Deal",     index = 5 },
+                { name = "Lost Contract",   index = 6 },
+                { name = "Data Contract",   index = 7 }
             }
         },
         CayoPerico = {
@@ -438,6 +438,20 @@ eTable = {
                 { name = "Healthcare n Bail",    index = eStat.MPX_MONEY_SPENT_HEALTHCARE      },
                 { name = "Dropped or Stolen",    index = eStat.MPX_MONEY_SPENT_DROPPED_STOLEN  }
             }
+        }
+    },
+    Session = {
+        Types = {
+            Public       = 0,
+            NewPublic    = 1,
+            ClosedCrew   = 2,
+            Crew         = 3,
+            ClosedFriend = 4,
+            Friend       = 5,
+            Solo         = 6,
+            Invite       = 7,
+            JoinCrew     = 8,
+            Offline      = 9
         }
     },
     World = {

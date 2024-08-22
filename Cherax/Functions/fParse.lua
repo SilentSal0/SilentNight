@@ -161,6 +161,26 @@ function ParseStats(tbl)
     tbl.HAS_PARSED = true
 end
 
+function ParsePackedBools(tbl)
+    for _, v in pairs(tbl) do
+        if type(v) == "table" and v[1] then
+            v.Set = function(self, value)
+                local success, statValue = Stats.GetInt(Utils.sJoaat("MPPLY_LAST_MP_CHAR"))
+                if v[2] then
+                    for i = v[1], v[2] do
+                        eNative.STATS.SET_PACKED_STAT_BOOL_CODE(i, value, statValue)
+                    end
+                else
+                    eNative.STATS.SET_PACKED_STAT_BOOL_CODE(v[1], value, statValue)
+                end
+            end
+        elseif type(v) == "table" then
+            ParsePackedBools(v)
+        end
+    end
+    tbl.HAS_PARSED = true
+end
+
 function ParseTables(tbl)
     for _, v in pairs(tbl) do
         if type(v) == "table" and #v > 0 and type(v[1]) == "table" then
@@ -194,26 +214,6 @@ function ParseTables(tbl)
     tbl.HAS_PARSED = true
 end
 
-function ParsePackedBools(tbl)
-    for _, v in pairs(tbl) do
-        if type(v) == "table" and v[1] then
-            v.Set = function(self, value)
-                local success, statValue = Stats.GetInt(Utils.sJoaat("MPPLY_LAST_MP_CHAR"))
-                if v[2] then
-                    for i = v[1], v[2] do
-                        eNative.STATS.SET_PACKED_STAT_BOOL_CODE(i, value, statValue)
-                    end
-                else
-                    eNative.STATS.SET_PACKED_STAT_BOOL_CODE(v[1], value, statValue)
-                end
-            end
-        elseif type(v) == "table" then
-            ParsePackedBools(v)
-        end
-    end
-    tbl.HAS_PARSED = true
-end
-
 ParseTunables(eTunable)
 ParseGlobals(eGlobal)
 ParseLocals(eLocal)
@@ -222,11 +222,8 @@ ParsePackedBools(ePackedBool)
 ParseTables(eTable)
 
 Script.QueueJob(function()
-    local function AllParsed()
-        return eTunable.HAS_PARSED and eGlobal.HAS_PARSED and eLocal.HAS_PARSED and eStat.HAS_PARSED and ePackedBool.HAS_PARSED and eTable.HAS_PARSED
-    end
-    while not AllParsed() do
+    while not eTunable.HAS_PARSED and eGlobal.HAS_PARSED and eLocal.HAS_PARSED and eStat.HAS_PARSED and ePackedBool.HAS_PARSED and eTable.HAS_PARSED do
         Script.Yield(1)
     end
-    Logger.LogSN("Script has started successfully")
+    Logger.Log(eLogColor.GREEN, "Silent Night", "Script has started")
 end)

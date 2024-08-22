@@ -19,7 +19,7 @@ function SimulateFrontendControl(action)
 end
 
 function IsInSession()
-    return eNative.NETWORK_IS_SESSION_STARTED()
+    return eNative.NETWORK.NETWORK_IS_SESSION_STARTED() and eNative.NETWORK.NETWORK_IS_SESSION_ACTIVE()
 end
 
 function IsInSessionAlone()
@@ -28,6 +28,11 @@ end
 
 function EmptySession()
     FeatureMgr.GetFeatureByName("Bail From Session"):OnClick()
+end
+
+function StartSession(sessionType)
+    FeatureMgr.GetFeatureByName("Session Type"):SetListIndex(sessionType)
+    FeatureMgr.GetFeatureByName("Start Session"):OnClick()
 end
 
 function IsScriptRunning(scriptName)
@@ -50,7 +55,8 @@ function StartScript(scriptName, stackSize)
     return true
 end
 
-function ForceScriptHost()
+function ForceScriptHost(scriptName)
+    GTA.ForceScriptHost(Utils.Joaat(scriptName))
     FeatureMgr.GetFeatureByName("Force Script Host"):OnClick()
 end
 

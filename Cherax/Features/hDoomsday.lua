@@ -56,7 +56,7 @@ for i = 1, 4 do
     FeatureMgr.AddFeature(doomsdayPlayers[i].hash, doomsdayPlayers[i].name, doomsdayPlayers[i].type, doomsdayPlayers[i].desc, function(f)
     end)
         :SetDefaultValue(0)
-        :SetLimitValues(0, 10000)
+        :SetLimitValues(0, 999)
         :SetStepSize(1)
         :Reset()
 end

@@ -27,7 +27,8 @@ eNative = {
     },
     NETWORK = {
         NETWORK_GET_HOST_OF_SCRIPT = InvokeNative("Int", 0x1D6A14F1F9A736FC),
-        NETWORK_IS_SESSION_STARTED = InvokeNative("Bool", 0x9DE624D2FC4B603F)
+        NETWORK_IS_SESSION_STARTED = InvokeNative("Bool", 0x9DE624D2FC4B603F),
+        NETWORK_IS_SESSION_ACTIVE  = InvokeNative("Bool", 0xD83C2B94E7508980)
     },
     PAD = {
         ENABLE_CONTROL_ACTION        = InvokeNative(0x351220255D64C155),

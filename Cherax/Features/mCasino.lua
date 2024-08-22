@@ -50,11 +50,6 @@ FeatureMgr.AddFeature(casinoPokerGive.hash, casinoPokerGive.name, casinoPokerGiv
     casinoPokerReveal.func()
 end)
 
-FeatureMgr.AddFeature(casinoPokerGiveAll.hash, casinoPokerGiveAll.name, casinoPokerGiveAll.type, casinoPokerGiveAll.desc, function(f)   
-    casinoPokerGiveAll.func()
-    casinoPokerReveal.func()
-end)
-
 FeatureMgr.AddFeature(casinoPokerTrick.hash, casinoPokerTrick.name, casinoPokerTrick.type, casinoPokerTrick.desc, function(f)   
     casinoPokerTrick.func()
     casinoPokerReveal.func()
