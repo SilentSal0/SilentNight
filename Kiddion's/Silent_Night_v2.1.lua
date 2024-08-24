@@ -4164,7 +4164,7 @@ function create_bunker_crash_submenu()
 	bunker_crash_ls = bunker_crash:add_submenu("Legal Stats")
 
 	bunker_crash_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Sales Made/Undertaken: In Menu"
 		else
 			return "Sales Made/Undertaken: " .. stats.get_int(MPX() .. "LIFETIME_BKR_SEL_COMPLETBC5") .. "/" .. stats.get_int(MPX() .. "LIFETIME_BKR_SEL_UNDERTABC5")
@@ -4172,7 +4172,7 @@ function create_bunker_crash_submenu()
 	end, null, null, null)
 
 	bunker_crash_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Earnings: In Menu"
 		else
 			return "Earnings: $" .. format_money(stats.get_int(MPX() .. "LIFETIME_BKR_SELL_EARNINGS5"))
@@ -4434,7 +4434,7 @@ function create_hangar_cargo_vip_submenu()
 	hangar_cargo_vip_ls = hangar_cargo_vip:add_submenu("Legal Stats")
 
 	hangar_cargo_vip_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Buy Made/Undertaken: In Menu"
 		else
 			return "Buy Made/Undertaken: " .. stats.get_int(MPX() .. "LFETIME_HANGAR_BUY_COMPLET") .. "/" .. stats.get_int(MPX() .. "LFETIME_HANGAR_BUY_UNDETAK")
@@ -4442,7 +4442,7 @@ function create_hangar_cargo_vip_submenu()
 	end, null, null, null)
 
 	hangar_cargo_vip_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Sales Made/Undertaken: In Menu"
 		else
 			return "Sales Made/Undertaken: " .. stats.get_int(MPX() .. "LFETIME_HANGAR_SEL_COMPLET") .. "/" .. stats.get_int(MPX() .. "LFETIME_HANGAR_SEL_UNDETAK")
@@ -4450,7 +4450,7 @@ function create_hangar_cargo_vip_submenu()
 	end, null, null, null)
 
 	hangar_cargo_vip_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Earnings: In Menu"
 		else
 			return "Earnings: $" .. format_money(stats.get_int(MPX() .. "LFETIME_HANGAR_EARNINGS"))
@@ -4480,8 +4480,8 @@ function create_hangar_cargo_vip_submenu()
 
 	hangar_cargo_vip_ls:add_action("Apply New Stats", function()
 		if not states.b11 then
-			stats.set_int(MPX() .. "LFETIME_HANGAR_BUY_COMPLET", hangar_cargo_vip_b_mission)
-			stats.set_int(MPX() .. "LFETIME_HANGAR_BUY_UNDETAK", hangar_cargo_vip_b_mission)
+			stats.set_int(MPX() .. "LFETIME_HANGAR_BUY_COMPLET", hangar_cargo_vip_b_missions)
+			stats.set_int(MPX() .. "LFETIME_HANGAR_BUY_UNDETAK", hangar_cargo_vip_b_missions)
 			stats.set_int(MPX() .. "LFETIME_HANGAR_SEL_COMPLET", hangar_cargo_vip_s_missions)
 			stats.set_int(MPX() .. "LFETIME_HANGAR_SEL_UNDETAK", hangar_cargo_vip_s_missions)
 		end
@@ -4803,7 +4803,7 @@ function create_nightclub_helper_submenu()
 	nightclub_helper_ls = nightclub_helper:add_submenu("Legal Stats")
 
 	nightclub_helper_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Sales Made: In Menu"
 		else
 			return "Sales Made: " .. stats.get_int(MPX() .. "HUB_SALES_COMPLETED")
@@ -4811,7 +4811,7 @@ function create_nightclub_helper_submenu()
 	end, null, null, null)
 
 	nightclub_helper_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Earnings: In Menu"
 		else
 			return "Earnings: $" .. format_money(stats.get_int(MPX() .. "HUB_EARNINGS"))
@@ -4988,7 +4988,7 @@ function create_special_cargo_vip_submenu()
 	special_cargo_vip_ls = special_cargo_vip_settings:add_submenu("Legal Stats")
 
 	special_cargo_vip_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Buy Made/Undertaken: In Menu"
 		else
 			return "Buy Made/Undertaken: " .. stats.get_int(MPX() .. "LIFETIME_BUY_COMPLETE") .. "/" .. stats.get_int(MPX() .. "LIFETIME_BUY_UNDERTAKEN")
@@ -4996,7 +4996,7 @@ function create_special_cargo_vip_submenu()
 	end, null, null, null)
 
 	special_cargo_vip_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Sales Made/Undertaken: In Menu"
 		else
 			return "Sales Made/Undertaken: " .. stats.get_int(MPX() .. "LIFETIME_SELL_COMPLETE") .. "/" .. stats.get_int(MPX() .. "LIFETIME_SELL_UNDERTAKEN")
@@ -5004,7 +5004,7 @@ function create_special_cargo_vip_submenu()
 	end, null, null, null)
 
 	special_cargo_vip_ls:add_bare_item("", function()
-		if localplayer ~= nil then
+		if localplayer == nil then
 			return "Earnings: In Menu"
 		else
 			return "Earnings: $" .. format_money(stats.get_int(MPX() .. "LIFETIME_CONTRA_EARNINGS"))
@@ -6488,7 +6488,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.0")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.1")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")
