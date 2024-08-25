@@ -4292,8 +4292,10 @@ function create_casino_master_submenu()
 		return states.i44
 	end, function(prize)
 		states.i44 = 1
-		CLW:set_int(CMGLPl1, get_id_from_table(lucky_wheel_prizes, prize - 1))
-		CLW:set_int(CMGLPl2, 11)
+		if prize ~= 1 then
+			CLW:set_int(CMGLPl1, get_id_from_table(lucky_wheel_prizes, prize - 1))
+			CLW:set_int(CMGLPl2, 11)
+		end
 	end)
 
 	casino_master_lw:add_action(SPACE, null)

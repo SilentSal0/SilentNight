@@ -1729,6 +1729,7 @@ eFeature = {
                                 end
                                 if eStat.MPX_HANGAR_CONTRABAND_TOTAL:Get() < 4 then
                                     ePackedBool.Business.Hangar.Cargo:Set(true)
+                                    Script.Yield(1000)
                                 end
                                 eTunable.Business.Hangar.Price:Set(math.floor(4000000 / eStat.MPX_HANGAR_CONTRABAND_TOTAL:Get()))
                                 eTunable.Business.Hangar.RonsCut:Set(0.0)
@@ -1736,7 +1737,6 @@ eFeature = {
                                 eTunable.Business.Hangar.Price:Reset()
                                 eTunable.Business.Hangar.RonsCut:Reset()
                             end
-                            Script.Yield(1000)
                         end
                     end
                 },
@@ -1918,7 +1918,6 @@ eFeature = {
                             eTunable.Business.Nightclub.Price.Cash:Reset()
                             eTunable.Business.Nightclub.Price.Cargo:Reset()
                         end
-                        Script.Yield(1000)
                     end
                 }
             },
@@ -2095,7 +2094,6 @@ eFeature = {
                                 eTunable.Business.CrateWarehouse.Price["Threshold" .. i]:Reset()
                             end
                         end
-                        Script.Yield(1000)
                     end
                 },
                 NoXp = {
