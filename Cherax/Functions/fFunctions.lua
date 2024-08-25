@@ -156,6 +156,8 @@ function ImGui.EndColumns()
     ImGui.EndTable()
 end
 
-function Logger.LogSN(str)
-    Logger.Log(eLogColor.YELLOW, "Silent Night", str)
+function Log(message, color)
+    local color = color or eLogColor.YELLOW
+    Logger.Log(color, "Silent Night", message)
+    GUI.AddToast("Silent Night", message, 5000, eToastPos.TOP_RIGHT)
 end

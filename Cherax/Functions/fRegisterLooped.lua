@@ -30,6 +30,9 @@ function EasyLooper()
     if FeatureMgr.GetFeature(easyLoop50k.hash):IsToggled() then
         easyLoop50k.func()
     end
+    if FeatureMgr.GetFeature(easyLoop100k.hash):IsToggled() then
+        easyLoop100k.func()
+    end
     if FeatureMgr.GetFeature(easyLoop180k.hash):IsToggled() then
         easyLoop180k.func()
     end
@@ -75,12 +78,6 @@ local HAS_PARSED         = false
 local LAST_SESSION_STATE = false
 
 function ReParse()
-    local names = {
-        "Tunables",
-        "Globals",
-        "Locals",
-        "Stats"
-    }
     if not IsInSession() then
         if HAS_PARSED then
             HAS_PARSED = false
@@ -89,7 +86,7 @@ function ReParse()
     else
         if not HAS_PARSED or LAST_SESSION_STATE ~= IsInSession() then
             Script.Yield(5000)
-            Logger.LogSN("Online session detected")
+            Log("Online session detected")
             ParseTunables(eTunable)
             ParseStats(eStat)
             ReAssign()
@@ -98,9 +95,7 @@ function ReParse()
             while not eTunable.HAS_PARSED and eGlobal.HAS_PARSED and eLocal.HAS_PARSED and eStat.HAS_PARSED and ePackedBool.HAS_PARSED and eTable.HAS_PARSED do
                 Script.Yield(1)
             end
-            for i = 1, #names do
-                Logger.LogSN(string.format("%s have parsed", names[i]))
-            end
+            Log("All required values parsed")
             HAS_PARSED = true
         end
     end

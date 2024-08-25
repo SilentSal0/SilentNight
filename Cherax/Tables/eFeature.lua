@@ -265,6 +265,7 @@ eFeature = {
                     desc = "Applies the selected cuts for players.",
                     func = function(team, receivers, cuts)
                         GUI.Toggle()
+                        Script.Yield(1000)
                         local function SetCuts()
                             eGlobal.Heist.Apartment.Cut.Player1.Global:Set(100 - (cuts[1] * team))
                             eGlobal.Heist.Apartment.Cut.Player2.Global:Set(cuts[2])
@@ -272,8 +273,8 @@ eFeature = {
                             eGlobal.Heist.Apartment.Cut.Player4.Global:Set(cuts[4])
                             eNative.PAD.SET_CURSOR_POSITION(0.775, 0.175)
                             SimulatePlayerControl(237)
-                            SimulateFrontendControl(202)
                             Script.Yield(1000)
+                            SimulateFrontendControl(202)
                         end
                         if receivers == 0 and team ~= 1 then
                             SetCuts()
@@ -1362,7 +1363,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_Bunker_Price"),
                     name = "Maximize Price",
                     type = eFeatureType.Toggle,
-                    desc = "Applies the maximum price for your stock.",
+                    desc = "UNTESTED. Applies the maximum price for your stock.",
                     func = function(bool)
                         if bool then
                             if not IsInSessionAlone() then
@@ -1728,7 +1729,6 @@ eFeature = {
                                 end
                                 if eStat.MPX_HANGAR_CONTRABAND_TOTAL:Get() < 4 then
                                     ePackedBool.Business.Hangar.Cargo:Set(true)
-                                    Script.Yield(1000)
                                 end
                                 eTunable.Business.Hangar.Price:Set(math.floor(4000000 / eStat.MPX_HANGAR_CONTRABAND_TOTAL:Get()))
                                 eTunable.Business.Hangar.RonsCut:Set(0.0)
@@ -1736,6 +1736,7 @@ eFeature = {
                                 eTunable.Business.Hangar.Price:Reset()
                                 eTunable.Business.Hangar.RonsCut:Reset()
                             end
+                            Script.Yield(1000)
                         end
                     end
                 },
@@ -1917,6 +1918,7 @@ eFeature = {
                             eTunable.Business.Nightclub.Price.Cash:Reset()
                             eTunable.Business.Nightclub.Price.Cargo:Reset()
                         end
+                        Script.Yield(1000)
                     end
                 }
             },
@@ -2092,7 +2094,8 @@ eFeature = {
                             for i = 1, 21 do
                                 eTunable.Business.CrateWarehouse.Price["Threshold" .. i]:Reset()
                             end
-                        end 
+                        end
+                        Script.Yield(1000)
                     end
                 },
                 NoXp = {
@@ -2111,7 +2114,7 @@ eFeature = {
                     hash = Utils.Joaat("SN_CrateWarehouse_Sell"),
                     name = "Instant Sell",
                     type = eFeatureType.Button,
-                    desc = "UNSAFE. Finishes the sell mission instantly. Use after the mission has started.",
+                    desc = "Finishes the sell mission instantly. Use after the mission has started.",
                     func = function(bool1, bool2)
                         if not bool2 then
                             if IsScriptRunning(eScript.Business.CrateWarehouse.Sell.name) then
@@ -2309,6 +2312,16 @@ eFeature = {
                     desc = "UNTESTED. Toggles the 50k dollars loop.",
                     func = function()
                         TriggerTransaction(0x610F9AB4)
+                        Script.Yield(333)
+                    end
+                },
+                Loop100k = {
+                    hash = Utils.Joaat("SN_EasyMoney_100k"),
+                    name = "100k Loop",
+                    type = eFeatureType.Toggle,
+                    desc = "Toggles the 100k dollars loop.",
+                    func = function()
+                        TriggerTransaction(Utils.sJoaat("SERVICE_EARN_AMBIENT_JOB_AMMUNATION_DELIVERY"))
                         Script.Yield(333)
                     end
                 },

@@ -481,6 +481,7 @@ function RenderMoneyTool()
                     if ClickGUI.BeginCustomChildWindow("Freeroam") then
                         ClickGUI.RenderFeature(easyLoop5k.hash)
                         ClickGUI.RenderFeature(easyLoop50k.hash)
+                        ClickGUI.RenderFeature(easyLoop100k.hash)
                         ClickGUI.RenderFeature(easyLoop180k.hash)
                         ClickGUI.EndCustomChildWindow()
                     end

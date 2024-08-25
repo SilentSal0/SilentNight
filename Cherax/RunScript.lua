@@ -29,6 +29,7 @@ local files   = {
     "mMisc",
     "fFunctions",
     "fRegisterLooped",
+    "fEvents",
     "fRender"
 }
 

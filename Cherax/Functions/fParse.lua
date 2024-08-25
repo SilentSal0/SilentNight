@@ -7,12 +7,12 @@ function ParseTunables(tbl)
             elseif type(v.tunable) == "number" and v.tunable == math.floor(v.tunable) then
                 joaat = v.tunable
             else
-                Logger.LogSN("Bad tunable! " .. v.tunable)
+                Log("Bad tunable! " .. v.tunable, eLogColor.RED)
                 break
             end
             local pointer = ScriptGlobal.GetTunableByHash(joaat)
             if pointer == 0 then
-                Logger.LogSN("Bad tunable pointer! " .. v.tunable .. " " .. pointer)
+                Log("Bad tunable pointer! " .. v.tunable .. " " .. pointer, eLogColor.RED)
                 break
             end
             v.pointer = pointer
@@ -22,7 +22,7 @@ function ParseTunables(tbl)
                 elseif self.type == "float" then
                     return Memory.ReadFloat(self.pointer)
                 end
-                Logger.LogSN("No type for tunable! " .. self.tunable)
+                Log("No type for tunable! " .. self.tunable, eLogColor.RED)
                 return nil
             end
             v.Set = function(self, value)
@@ -31,7 +31,7 @@ function ParseTunables(tbl)
                 elseif self.type == "float" then
                     Memory.WriteFloat(self.pointer, value)
                 else
-                    Logger.LogSN("No type for tunable! " .. self.tunable)
+                    Log("No type for tunable! " .. self.tunable, eLogColor.RED)
                 end
             end
             v.Reset = function(self)
@@ -40,7 +40,7 @@ function ParseTunables(tbl)
                 elseif self.type == "float" then
                     Memory.WriteFloat(self.pointer, self.defaultValue)
                 else
-                    Logger.LogSN("No type for tunable! " .. self.tunable)
+                    Log("No type for tunable! " .. self.tunable, eLogColor.RED)
                 end
             end
         elseif type(v) == "table" then
@@ -61,7 +61,7 @@ function ParseGlobals(tbl)
                 elseif self.type == "bool" then
                     return ScriptGlobal.GetBool(self.global)
                 end
-                Logger.LogSN("No type for global! " .. self.global)
+                Log("No type for global! " .. self.global, eLogColor.RED)
                 return nil
             end
             v.Set = function(self, value)
@@ -72,7 +72,7 @@ function ParseGlobals(tbl)
                 elseif self.type == "bool" then
                     ScriptGlobal.SetBool(self.global, value)
                 else
-                    Logger.LogSN("No type for global! " .. self.global)
+                    Log("No type for global! " .. self.global, eLogColor.RED)
                 end
             end
         elseif type(v) == "table" then
@@ -92,7 +92,7 @@ function ParseLocals(tbl)
                 elseif self.type == "float" then
                     return ScriptLocal.GetFloat(scriptHash, self.vLocal)
                 end
-                Logger.LogSN("No type for local! ", self.vLocal)
+                Log("No type for local! ", self.vLocal, eLogColor.RED)
                 return nil
             end
             v.Set = function(self, value)
@@ -102,7 +102,7 @@ function ParseLocals(tbl)
                 elseif self.type == "float" then
                     ScriptLocal.SetFloat(scriptHash, self.vLocal, value)
                 else
-                    Logger.LogSN("No type for local! " .. self.vLocal)
+                    Log("No type for local! " .. self.vLocal, eLogColor.RED)
                 end
             end
         elseif type(v) == "table" then
@@ -125,7 +125,7 @@ function ParseStats(tbl)
             elseif v.stat:find("MPPLY") or IsStoryStat() then
                 hash = Utils.sJoaat(v.stat)
             else
-                Logger.LogSN("Bad stat! " .. v.stat)
+                Log("Bad stat! " .. v.stat, eLogColor.RED)
                 break
             end
             v.hash = hash
@@ -140,7 +140,7 @@ function ParseStats(tbl)
                     local success, statValue = Stats.GetBool(self.hash)
                     return statValue
                 end
-                Logger.LogSN("No type for stat! " .. self.stat)
+                Log("No type for stat! " .. self.stat, eLogColor.RED)
                 return nil
             end
             v.Set = function(self, value)
@@ -151,7 +151,7 @@ function ParseStats(tbl)
                 elseif self.type == "bool" then
                     Stats.SetBool(self.hash, value)
                 else
-                    Logger.LogSN("No type for stat! " .. self.stat)
+                    Log("No type for stat! " .. self.stat, eLogColor.RED)
                 end
             end
         elseif type(v) == "table" then
@@ -225,5 +225,5 @@ Script.QueueJob(function()
     while not eTunable.HAS_PARSED and eGlobal.HAS_PARSED and eLocal.HAS_PARSED and eStat.HAS_PARSED and ePackedBool.HAS_PARSED and eTable.HAS_PARSED do
         Script.Yield(1)
     end
-    Logger.Log(eLogColor.GREEN, "Silent Night", "Script has started")
+    Log("Script has started", eLogColor.GREEN)
 end)
