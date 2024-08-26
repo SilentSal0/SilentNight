@@ -273,15 +273,15 @@ eFeature = {
                             eGlobal.Heist.Apartment.Cut.Player4.Global:Set(cuts[4])
                             eNative.PAD.SET_CURSOR_POSITION(0.775, 0.175)
                             SimulatePlayerControl(237)
-                            Script.Yield(1000)
                             SimulateFrontendControl(202)
                         end
-                        if receivers == 0 and team ~= 1 then
+                        if team ~= 1 and receivers == 0 then
                             SetCuts()
+                            Script.Yield(1000)
                             eGlobal.Heist.Apartment.Cut.Player1.Local:Set(cuts[1])
-                        elseif receivers == 1 and team ~= 1 then
+                        elseif team ~= 1 and receivers == 1 then
                             SetCuts()
-                        elseif receivers == 2 or team == 1 then
+                        elseif team == 1 or receivers == 2 then
                             eGlobal.Heist.Apartment.Cut.Player1.Local:Set(cuts[1])
                         end
                         GUI.Toggle()
