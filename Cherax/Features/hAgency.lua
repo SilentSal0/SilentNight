@@ -2,9 +2,9 @@ FeatureMgr.AddFeature(agencyContract.hash, agencyContract.name, agencyContract.t
 end)
     :SetList(agencyContract.list:GetNames())
 
-FeatureMgr.AddFeature(agencyApply.hash, agencyApply.name, agencyApply.type, agencyApply.desc, function(f)
+FeatureMgr.AddFeature(agencyComplete.hash, agencyComplete.name, agencyComplete.type, agencyComplete.desc, function(f)
     local contract = agencyContract.list[FeatureMgr.GetFeatureListIndex(agencyContract.hash) + 1].index
-    agencyApply.func(contract)
+    agencyComplete.func(contract)
 end)
 
 FeatureMgr.AddFeature(agencyCooldown.hash, agencyCooldown.name, agencyCooldown.type, agencyCooldown.desc, function(f)
@@ -22,7 +22,7 @@ end)
     :SetStepSize(100000)
     :Reset()
 
-FeatureMgr.AddFeature(agencyComplete.hash, agencyComplete.name, agencyComplete.type, agencyComplete.desc, function(f)
+FeatureMgr.AddFeature(agencyApply.hash, agencyApply.name, agencyApply.type, agencyApply.desc, function(f)
     local payout = FeatureMgr.GetFeature(agencySelect.hash):GetIntValue()
-    agencyComplete.func(payout)
+    agencyApply.func(payout)
 end)

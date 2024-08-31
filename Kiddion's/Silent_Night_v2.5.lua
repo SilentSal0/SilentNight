@@ -283,12 +283,12 @@ ORg     = 1962237 						-- orbital refund 							// Guide:   ORB_CAN_QUIT1
 AUg     = 4543384 + 1 					-- achievements unlocker 					// Guide:   PLAYER::HAS_ACHIEVEMENT_BEEN_PASSED(iParam0) && iParam1 == 1
 CUg     = 2708057 						-- collectibles unlocker					// Guide:   cellphone_badger
 AFo     = CUg + 209 					-- action figures offset
-LDOo    = CUg + 593 					-- ld organics offset
+LDOo    = CUg + 421 					-- ld organics offset
 PCo     = CUg + 210 					-- plating cards offset
 SJo     = CUg + 211 					-- signal jammers offset
-So      = CUg + 600 					-- snowmen offset
-MPo     = CUg + 494 					-- movie props offset
-JOLo    = CUg + 591 					-- jack o lanterns offset
+So      = CUg + 523 					-- snowmen offset
+MPo     = CUg + 418 					-- movie props offset
+JOLo    = CUg + 514 					-- jack o lanterns offset
 SCCg    = FMg + 18919 					-- sex changer change appearance cooldown	// Tunable: CHARACTER_APPEARANCE_COOLDOWN
 BUCg1   = FMg + 21264 					-- bunker unlocker cooldown 1				// Tunable: GR_RESEARCH_CAPACITY
 BUCg2   = FMg + 21265 					-- bunker unlocker cooldown 2 				// Tunable: GR_RESEARCH_PRODUCTION_TIME
@@ -3036,7 +3036,7 @@ function create_apartment_submenu()
 		globals.set_int(ACg2, (apartment_player2 == "On") and apartment_cut or 0)
 		globals.set_int(ACg3, (apartment_player3 == "On") and apartment_cut or 0)
 		globals.set_int(ACg4, (apartment_player4 == "On") and apartment_cut or 0)
-		sleep(0.5)
+		sleep(1)
 		globals.set_int(ACFg1, 1)
 		globals.set_int(ACFg2, 4)
 		globals.set_int(ACFg2, 3)
@@ -6490,7 +6490,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.4")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.5")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")
