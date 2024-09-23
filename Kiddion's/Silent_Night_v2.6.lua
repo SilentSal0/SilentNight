@@ -6216,7 +6216,10 @@ function create_lsc_submenu()
 		end
 		return "Apply Plate: " .. plate
 	end, function()
-		local new_plate = def_nums[21] .. def_nums[22] .. def_nums[23]  .. def_nums[24]  .. def_nums[25]  .. def_nums[26]  .. def_nums[27]  .. def_nums[28] 
+		local new_plate = ""
+		for i = 39, 46 do
+			new_plate = new_plate .. def_nums[i]
+		end
 		if localplayer ~= nil and localplayer:is_in_vehicle() then
 			localplayer:get_current_vehicle():set_number_plate_text(new_plate)
 		end
@@ -6490,7 +6493,7 @@ end
 
 --Main Menu--
 
-silent_night =         menu.add_submenu("ツ Silent Night | v2.5")
+silent_night =         menu.add_submenu("ツ Silent Night | v2.6")
 heist_tool   = silent_night:add_submenu("♠ Heist Tool")
 money_tool   = silent_night:add_submenu("♣ Money Tool")
 unlock_tool  = silent_night:add_submenu("♦ Unlock Tool")

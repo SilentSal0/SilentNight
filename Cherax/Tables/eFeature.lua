@@ -2406,6 +2406,7 @@ eFeature = {
                     type = eFeatureType.Button,
                     desc = "Deposits all money to your bank.",
                     func = function()
+                        local charSlot = eStat.MPPLY_LAST_MP_CHAR:Get()
                         eNative.NETSHOPPING.NET_GAMESERVER_TRANSFER_WALLET_TO_BANK(charSlot, eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE())
                     end
                 },
@@ -2414,7 +2415,8 @@ eFeature = {
                     name = "Withdraw All",
                     type = eFeatureType.Button,
                     desc = "Withdraws all money from your bank.",
-                    func = function(amount)
+                    func = function()
+                        local charSlot = eStat.MPPLY_LAST_MP_CHAR:Get()
                         eNative.NETSHOPPING.NET_GAMESERVER_TRANSFER_BANK_TO_WALLET(charSlot, eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE())
                     end
                 }
