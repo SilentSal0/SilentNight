@@ -2374,7 +2374,7 @@ eFeature = {
                     desc = "Deposits the selected money amount to your bank.",
                     func = function(amount)
                         local charSlot = eStat.MPPLY_LAST_MP_CHAR:Get()
-                        local amount   = (amount > eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE()) and eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE() or amount
+                        local amount   = (amount > eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE(charSlot)) and eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE(charSlot) or amount
                         eNative.NETSHOPPING.NET_GAMESERVER_TRANSFER_WALLET_TO_BANK(charSlot, amount)
                     end
                 },
@@ -2396,7 +2396,7 @@ eFeature = {
                     desc = "Removes the selected money amount from your character.",
                     func = function(amount)
                         local charSlot = eStat.MPPLY_LAST_MP_CHAR:Get()
-                        local amount   = (amount > eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE() + eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE()) and eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE() + eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE() or amount
+                        local amount   = (amount > eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE() + eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE(charSlot)) and eNative.MONEY.NETWORK_GET_VC_BANK_BALANCE() + eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE(charSlot) or amount
                         eGlobal.Player.Cash.Remove:Set(amount)
                     end
                 },
@@ -2407,7 +2407,7 @@ eFeature = {
                     desc = "Deposits all money to your bank.",
                     func = function()
                         local charSlot = eStat.MPPLY_LAST_MP_CHAR:Get()
-                        eNative.NETSHOPPING.NET_GAMESERVER_TRANSFER_WALLET_TO_BANK(charSlot, eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE())
+                        eNative.NETSHOPPING.NET_GAMESERVER_TRANSFER_WALLET_TO_BANK(charSlot, eNative.MONEY.NETWORK_GET_VC_WALLET_BALANCE(charSlot))
                     end
                 },
                 WithdrawAll = {
