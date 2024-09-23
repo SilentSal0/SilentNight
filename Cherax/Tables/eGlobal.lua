@@ -147,7 +147,7 @@ eGlobal = {
     },
     Player = {
         Cash = {
-            Remove = { type = "int", global = 2707357 + 36 }
+            Remove = { type = "int", global = 2707358 + 36 }
         },
         Collectible = {
             ActionFigures = { type = "int", global = 2708057 + 209 },
